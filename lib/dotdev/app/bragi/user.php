@@ -7,7 +7,7 @@ namespace dotdev\app\bragi;
 use \tools\error as e;
 use \tools\helper as h;
 
-// Authentication Class for bragiprofile.dotdev.de
+// Authentication Class
 class user {
 	use \tools\pdo_trait,
 		\tools\libcom_trait;
