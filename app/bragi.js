@@ -1,4 +1,3 @@
-// bragi.js
 
 // reinitialize global variables (e.g. $), avoiding conflict with other .js
 jQuery.noConflict();

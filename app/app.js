@@ -1,4 +1,3 @@
-// bragiportal.js
 
 jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflict with other .js
 
