@@ -1,7 +1,7 @@
 <?php
 /*****
  * Local Test function for catlop (Controlled access to library over Public-key cryptography)
- * Version	 	1.0.2016-04-11
+ * Version	 	1.0.2016-05-11
  * Local use only
  * Author: Mathias Appelmans
 **/
