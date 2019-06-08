@@ -22,11 +22,12 @@ class iprange {
 		}
 
 	/*****
-	 *	To store IPv4 addresses, an UNSIGNED INT is enough:
+	 *	To store IPv4 addresses, an UNSIGNED INT is a good solution:
 	 *
 	 * String 	255.255.255.255
 	 * Binary	11111111 . 11111111 . 11111111 . 11111111
 	 * Integer	4294967295
+	 * 4 Giga
 	 *
 	**/
 	public static function create($req){
