@@ -26,10 +26,13 @@ class psrloader {
 		}
 
 	public static function load($call){
+
 		if(!self::loadable($call, $file, $notfoundin)){
 			return self::error('Keine PHP-Datei für '.$call.' gefunden ('.implode(', ', $notfoundin).')');
 			}
+
 		include $file; // value received from loadable(&$file)
+
 		return true;
 		}
 
@@ -44,21 +47,26 @@ class psrloader {
 	 * function can modify (i.e. assign to) the variable ($file and $notfoundin) used as argument—something that will be seen by its caller (self::loadable($file, $notfoundin)).
 	 * Call-by-reference can therefore be used to provide an additional channel of communication between the called function and the calling function.
 	 * A call-by-reference language makes it more difficult for a programmer to track the effects of a function call, and may introduce subtle bugs.
+	 * But it gives you the ability to modify the variable in the calling scope
 	 */
-	public static function loadable($call, &$file = '', &$notfoundin = []){
+	public static function loadable($call, &$file = '', &$notfoundin = []){ // initialize (='') and reference (&)
 
 		// ns: namespace
 		$ns = explode('::', $call); // suppress leading double colon
-		$sub = explode('\\', $ns[0]); // arrayify the class path
-		$sub[] = str_replace('_', '/', array_pop($sub)); // dépile et slashify the underscored class name, p.e. pdo_trait --> pdo/trait, pdo_cache --> pdo/cache, and add it to path array
-		$sub = ($sub[0] ? '/' : '').implode('/', $sub).'.php'; // rewrite all path.
 
-		// try to find the file in all registered paths with self::register($path)
+		$sub = explode('\\', $ns[0]); // arrayify the class path
+
+		$sub[] = str_replace('_', '/', array_pop($sub)); // dépile de la fin et slashify the underscored class name, p.e. pdo_trait --> pdo/trait, pdo_cache --> pdo/cache, AND ADD IT ( with $sub[]= ) to path array
+
+		$sub = ($sub[0] ? '/' : '').implode('/', $sub).'.php'; // reconstruct path string and add extension.
+
+		// try to find the file in all registered paths (registered by self::register($path))
 		foreach(array_reverse(self::$try_path) as $path){
 			$file = $path.$sub;
 			if(is_file($file)) return true;
 			$notfoundin[] = $file;
 			}
+
 		return false;
 		}
 
