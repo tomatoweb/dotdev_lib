@@ -1,6 +1,22 @@
 
 jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflict with other .js
 
+/*
+* Prevent any jQuery code from running before the document is finished loading (is ready)
+* 3 synonym methods:
+*
+* $(document).ready(function(){ -- W3C prefered method --
+*    ..code..
+* });
+*
+* $(function(){
+*     ..code..
+* });
+*
+* (function($){
+*     ..code..
+* })(jquery);
+*/
 (function($){
 
 	var app = angular.module('app', ['ngSanitize', 'ui.select','ui.bootstrap', 'perfect_scrollbar', 'ngBootbox', 'infinite-scroll']);
@@ -406,6 +422,9 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
         // set default prefix int
         $scope.countrySelection = [];
         $scope.countrySelection['selected'] = {"countryID": "1"};
+
+        // hide message box to user
+        $("#alert").hide();
 
         $scope.doShuffle = function() {
             shuffleArray($scope.profiles);
@@ -941,16 +960,17 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
 
         $scope.refreshUserProfile = function () {
 
-            // hide images dropzone
+            // hide user images dropzone
             $scope.showDropzone = false;
 
             // display flash message
-            $('#alert').html($scope.text[40]).css("color","#f0ad4e");
+            $("#alert").show();
+            $('#alert').html($scope.text[40]);
 
             // fade and remove flash message
             setTimeout(function(){
-                $('#alert').html(' &nbsp');
-                },5000);
+                $('#alert').fadeOut(2000,function(){$(this).remove();});
+            },3000);
 
             // delay refresh for uploading images to complete
             setTimeout(function(){
@@ -967,12 +987,13 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
                             $scope.selectedImg = false;
 
                             // display flash message
-                            $('#alert').html($scope.text[50]).css("color","mediumspringgreen");
+                            $("#alert").show();
+                            $('#alert').html($scope.text[50]);
 
                             // fade and remove flash message
                             setTimeout(function(){
-                                $('#alert').html(' &nbsp');
-                                },5000);
+                                $('#alert').fadeOut(2000,function(){$(this).remove();});
+                            },3000);
                         }
 
                         // profile not found
@@ -1635,14 +1656,6 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
             // rename prop
             if(prop == 'name') prop = 'profileName';
 
-            // display flash message
-            $('#alert').html($scope.text[40]).css("color","#f0ad4e");
-
-            // fade and remove flash message
-            setTimeout(function(){
-                $('#alert').html(' &nbsp');
-                },5000);
-
             // get DOM element
             el = "#"+el;
             element = $(el);
@@ -1673,12 +1686,13 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
                             $scope.getUser($scope.us.mobileID);
 
                             // display flash message
-                            $('#alert').html($scope.text[50]).css("color","mediumspringgreen");
+                            $("#alert").show();
+                            $('#alert').html($scope.text[50]);
 
                             // fade and remove flash message
                             setTimeout(function(){
-                                $('#alert').html(' &nbsp');
-                                },5000);
+                                $('#alert').fadeOut(2000,function(){$(this).hide();});
+                                },3000);
 
                         } else {
                             console.log('could not update user profile');
@@ -1754,7 +1768,8 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
                     }
 
                 // display alert message
-                $('#alert').html('Wird geladen ...').css("color","#47a447");
+                $("#alert").show();
+                $('#alert').html('Wird geladen ...');
 
                 // prepare ajax data
                 var ajaxData = {
@@ -1770,9 +1785,12 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
                     function (response) {
                         if(response.status == 200){
 
-                            // remove alert message
-                            $('#alert').html('');
+                            // fade and remove flash message
+                            setTimeout(function(){
+                                $('#alert').fadeOut(2000,function(){$(this).remove();});
+                            },3000);
 
+                            // Initialize Highchart data
                             $scope.tanUsersDates = new Array();
                             $scope.tanUsersSeries =  [
                                 { name: "Flirddy", data: [], color: '#FF9933' },
@@ -1785,27 +1803,26 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
 
                             for(var i= 0; i < values.length; i++) {
 
-                                // build dates serie
+                                // build dates Highchart serie
                                 $scope.tanUsersDates.push(values[i].name);
 
+                                // initialize each scheme counter
                                 flirddy = 0;
                                 cherry = 0;
                                 fever = 0;
 
                                 for(var j= 0; j < values[i].users.length; j++) {
 
+                                    // parse JSON to object
                                     val = JSON.parse(values[i].users[j].data);
+
+                                    // increment each scheme counter
                                     if(val.scheme == 'flirddy') flirddy++;
                                     else if(val.scheme == 'cherry') cherry++;
                                     else if(val.scheme == 'fever') fever++;
-
                                 }
 
-                                // parse data json to object
-                                //value = JSON.parse(response.data[i].data);
-
-                                //if(value.scheme == 'flirddy')
-
+                                // prepare for Highchart
                                 $scope.tanUsersSeries[0].data.push(flirddy);
                                 $scope.tanUsersSeries[1].data.push(cherry);
                                 $scope.tanUsersSeries[2].data.push(fever);
@@ -1884,8 +1901,10 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
 
                         } else {
 
-                            // remove message "Loading profiles..." from navbar
-                            $('#alert').html('');
+                            // fade and remove flash message
+                            setTimeout(function(){
+                                $('#alert').fadeOut(2000,function(){$(this).remove();});
+                            },3000);
                             console.log('could not load tan_users');
                         }
                     }
@@ -1911,9 +1930,6 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
                     $scope.dateVisitsUsers.to = new Date(to);
                     }
 
-                // display alert message
-                $('#alert').html('Wird geladen ...').css("color","#47a447");
-
                 // prepare ajax data
                 var ajaxData = {
                     'visits': {
@@ -1927,9 +1943,6 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
                     ajaxData,
                     function (response) {
                         if(response.status == 200){
-
-                            // remove alert message
-                            $('#alert').html('');
 
                             $scope.visitsUsersDates = new Array();
                             $scope.visitsUsersSeries =  [
@@ -2043,7 +2056,7 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
                         } else {
 
                             // remove message "Loading profiles..." from navbar
-                            $('#alert').html('');
+                            $("#alert").hide();
                             console.log('could not load visits_users');
                         }
                     }
@@ -2052,8 +2065,13 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
         };
 	}]);
 
-    // Activate Tooltipster
+
+    /*
+     *  jQuery events and function
+     */
     $(document).ready(function() {
+
+        // Enable Tooltipster
         $('.tooltipster-bottom').tooltipster({
             position: 'bottom',
             contentAsHTML: true,
@@ -2072,6 +2090,25 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
             interactive: true,
             delay: 50
         });
+
+
+        // Blur (loose focus) on this input element when Enter key is pressed
+        function keydown (e){
+            if(e.keyCode===13){ // 13 is the code of the Enter key
+                document.getElementById('age-input').blur();
+                var blurOnEnter = document.getElementsByClassName("blur-on-enter");
+                for (var i = 0; i < blurOnEnter.length; i++) {
+                    blurOnEnter[i].blur();
+                }
+            }
+        }
+
+        // Add keydown event listener to user profile inputs
+        var blurOnEnter = document.getElementsByClassName("blur-on-enter");
+        for (var i = 0; i < blurOnEnter.length; i++) {
+            blurOnEnter[i].addEventListener('keydown', keydown);
+        }
+
     });
 
 	// Bootstrap button tooltip initialize
@@ -2080,7 +2117,6 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
 
 	//$('[data-toggle="tooltip"]').on('click', function () { $(this).tooltip('hide')});
 	//$('[data-toggle="tooltip"]').on('mouseout', function () {$(this).tooltip('hide')});
-
 })(jQuery);
 
 /* **********************************************  perfect-scrollbar angular module (need perfect-scrollbar js plugin) *******************************/

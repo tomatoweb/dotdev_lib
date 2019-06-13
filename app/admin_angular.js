@@ -1,4 +1,5 @@
 
+
 // reinitialize global variables (e.g. $), avoiding conflict with other .js
 jQuery.noConflict();
 
@@ -45,7 +46,7 @@ jQuery.noConflict();
 
                     $http({
                         method: 'POST',
-                        url: scope.$root.user.session.ajaxurl,
+                        url: scope.$root.us.ajaxurl,
                         data: { MOs_stats: 1  } // JS object is automaticaly converted in JSON by AngularJS http service
                     }).then(
                         function successCallback(response) {
@@ -146,160 +147,157 @@ jQuery.noConflict();
     // ng-switch destroy its div, accordingly to this fact, no js will be initialy executed (div is not present in DOM till onclick).
     // Thus this directive will execute code after div creation by ng-click
 
-/*
+    /*  app.directive('maProfilesCharts', ['$http', function($http) {
 
-    app.directive('maProfilesCharts', ['$http', function($http) {
+            return {
+                restrict: 'EA',
+                link : function (scope, element, attrs, ngModelCtrl, http) {
 
-        return {
-            restrict: 'EA',
-            link : function (scope, element, attrs, ngModelCtrl, http) {
+                    $(function(){
 
-                $(function(){
+                        scope.profilesHighchartsLoader = {loading:true};
 
-                    scope.profilesHighchartsLoader = {loading:true};
+                        $http({
+                            method: 'POST',
+                            url: scope.$root.us.ajaxurl,
+                            data: { profiles_stats: 1  } // JS object is automaticaly converted in JSON by AngularJS http service
+                        }).then(function successCallback(response) {
+                            scope.profilesHighchartsLoader.loading = false;
+                            // .then() method is used as a promise, because response may not be available immediately.
+                            // successCallback() is the callback function that is called if the http request successfully respond.
+                            // response can be usefully debugged with $log.info(response), don't forget to inject $log in app.controller('appCtrl', ['$scope', '$http','log', function($scope, $http, $log)
+                            scope.jstats = response.data; // JSON is automatically converted in JS object by AngularJS http service
 
-                    $http({
-                        method: 'POST',
-                        url: scope.$root.user.session.ajaxurl,
-                        data: { profiles_stats: 1  } // JS object is automaticaly converted in JSON by AngularJS http service
-                    }).then(function successCallback(response) {
-                        scope.profilesHighchartsLoader.loading = false;
-                        // .then() method is used as a promise, because response may not be available immediately.
-                        // successCallback() is the callback function that is called if the http request successfully respond.
-                        // response can be usefully debugged with $log.info(response), don't forget to inject $log in app.controller('appCtrl', ['$scope', '$http','log', function($scope, $http, $log)
-                        scope.jstats = response.data; // JSON is automatically converted in JS object by AngularJS http service
+                            console.log('from directive.');
+                            console.log(scope.jstats);
 
-                        console.log('from directive.');
-                        console.log(scope.jstats);
+                            scope.categories = new Array();
+                            scope.series =  [
+                                { name: "Erhaltene MOs", data: [] },
+                                { name: "Senders", data:[], color: '#EF00ED' },
+                                { name: "Mittel MOs pro chat", data:[], color: '#90ed7d' },
+                                { name: "Mittel Mos pro Tag l(etzten 30 T.)", data:[], color: '#ff9811' }
+                            ];
 
-                        scope.categories = new Array();
-                        scope.series =  [
-                            { name: "Erhaltene MOs", data: [] },
-                            { name: "Senders", data:[], color: '#EF00ED' },
-                            { name: "Mittel MOs pro chat", data:[], color: '#90ed7d' },
-                            { name: "Mittel Mos pro Tag l(etzten 30 T.)", data:[], color: '#ff9811' }
-                        ];
+                            for(var i= 0; i < scope.jstats.length; i++) {
+                                scope.categories.push(scope.jstats[i].profileName);
+                                scope.series[0].data.push(scope.jstats[i].messages_received);
+                                scope.series[1].data.push(scope.jstats[i].senders);
+                                scope.series[2].data.push(Math.round(scope.jstats[i].messages_received/scope.jstats[i].senders));
+                                scope.series[3].data.push(scope.jstats[i].avg);
+                            }
 
-                        for(var i= 0; i < scope.jstats.length; i++) {
-                            scope.categories.push(scope.jstats[i].profileName);
-                            scope.series[0].data.push(scope.jstats[i].messages_received);
-                            scope.series[1].data.push(scope.jstats[i].senders);
-                            scope.series[2].data.push(Math.round(scope.jstats[i].messages_received/scope.jstats[i].senders));
-                            scope.series[3].data.push(scope.jstats[i].avg);
-                        }
+                            scope.chart = Highcharts.chart('container1', {
 
-                        scope.chart = Highcharts.chart('container1', {
-
-                            title: {
-                                text: 'Statistics by profile',
-                                style: {
-                                    color: 'rgb(189, 193, 195)',
-                                    font: ''
-                                }
-                            },
-                            legend: {
-                                itemStyle: {
-                                    color: 'rgb(189, 193, 195)',
-                                    font: ''
-                                }
-                            },
-                            chart: {
-                                type: 'column',
-                                backgroundColor:'#3e3e3e',
-                                color: "rgb(189, 193, 195)"
-                            },
-                            xAxis: {
-                                labels: {
-                                    style: {
-                                        color:"rgb(189, 193, 195)",
-                                    }
-                                },
                                 title: {
-                                    text: '',
-                                    style: {
-                                        color: '',
-                                        font: ''
-                                    }
-                                },
-                                categories: scope.categories,
-                            },
-                            yAxis: {
-                                min: 0,
-                                title: {
-                                    text: '',
+                                    text: 'Statistics by profile',
                                     style: {
                                         color: 'rgb(189, 193, 195)',
                                         font: ''
                                     }
                                 },
-                                labels: {
-                                    style: {
-                                        color:"rgb(189, 193, 195)",
+                                legend: {
+                                    itemStyle: {
+                                        color: 'rgb(189, 193, 195)',
+                                        font: ''
                                     }
                                 },
-                            },
-                            tooltip: {
-                                headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
-                                pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}&nbsp;&nbsp;</td>' +
-                                    '<td style="padding:0"><b>{point.y}</b></td></tr>',
-                                footerFormat: '</table>',
-                                shared: true,
-                                useHTML: true
-                            },
-                            plotOptions: {
-                                column: {
-                                    pointPadding: 0.2,
-                                    borderWidth: 0
+                                chart: {
+                                    type: 'column',
+                                    backgroundColor:'#3e3e3e',
+                                    color: "rgb(189, 193, 195)"
                                 },
-                                series: {
-                                    events: {
-                                        legendItemClick: function() {
+                                xAxis: {
+                                    labels: {
+                                        style: {
+                                            color:"rgb(189, 193, 195)",
+                                        }
+                                    },
+                                    title: {
+                                        text: '',
+                                        style: {
+                                            color: '',
+                                            font: ''
+                                        }
+                                    },
+                                    categories: scope.categories,
+                                },
+                                yAxis: {
+                                    min: 0,
+                                    title: {
+                                        text: '',
+                                        style: {
+                                            color: 'rgb(189, 193, 195)',
+                                            font: ''
+                                        }
+                                    },
+                                    labels: {
+                                        style: {
+                                            color:"rgb(189, 193, 195)",
+                                        }
+                                    },
+                                },
+                                tooltip: {
+                                    headerFormat: '<span style="font-size:10px">{point.key}</span><table>',
+                                    pointFormat: '<tr><td style="color:{series.color};padding:0">{series.name}&nbsp;&nbsp;</td>' +
+                                        '<td style="padding:0"><b>{point.y}</b></td></tr>',
+                                    footerFormat: '</table>',
+                                    shared: true,
+                                    useHTML: true
+                                },
+                                plotOptions: {
+                                    column: {
+                                        pointPadding: 0.2,
+                                        borderWidth: 0
+                                    },
+                                    series: {
+                                        events: {
+                                            legendItemClick: function() {
 
-                                            // The very first click on a serie's legend will initialize: var hidden = TRUE
-                                            // The next clicks will switch the var 'hidden'
-                                            this.hidden = !this.hidden;
+                                                // The very first click on a serie's legend will initialize: var hidden = TRUE
+                                                // The next clicks will switch the var 'hidden'
+                                                this.hidden = !this.hidden;
 
-                                            i = 0;
+                                                i = 0;
 
-                                            this.yAxis.series.forEach(function(serie, index){
+                                                this.yAxis.series.forEach(function(serie, index){
 
-                                                if (!serie.hidden) {
+                                                    if (!serie.hidden) {
 
-                                                    if (i == 0) {
+                                                        if (i == 0) {
 
-                                                        // chart.series[0] returns a object with a 'data' property (an array of points objects)
-                                                        // chart.series[0].data[0] returns a point object, which you can then use it's 'update' method to change it's values.
+                                                            // chart.series[0] returns a object with a 'data' property (an array of points objects)
+                                                            // chart.series[0].data[0] returns a point object, which you can then use it's 'update' method to change it's values.
 
-                                                        //scope.chart.series[index].update(scope.series[index].data.sort(function(a, b){return a - b}).reverse());
-                                                        // trier sur la série complète plutôt que la série courante.
-                                                        scope.chart.series[index].update(scope.series[index].data.sort(function(a, b){return a - b}).reverse());
+                                                            //scope.chart.series[index].update(scope.series[index].data.sort(function(a, b){return a - b}).reverse());
+                                                            // trier sur la série complète plutôt que la série courante.
+                                                            scope.chart.series[index].update(scope.series[index].data.sort(function(a, b){return a - b}).reverse());
 
-                                                        scope.chart.redraw();
+                                                            scope.chart.redraw();
+                                                        }
+
+                                                        i++;
                                                     }
+                                                });
 
-                                                    i++;
-                                                }
-                                            });
-
+                                            }
                                         }
                                     }
-                                }
-                            },
-                            series: scope.series
-                        });
-                    },
-                    function errorCallback(response) {
-                        scope.profilesHighchartsLoader.loading = false;
-                        // called asynchronously if an error occurs or
-                        //server returns response with an error status.
-                        scope.error = response.data;
-                    }); // end $http().then()
-                }); // end $(function())
-            } // end link
-        } // end return
-    }]);
-
-*/
+                                },
+                                series: scope.series
+                            });
+                        },
+                        function errorCallback(response) {
+                            scope.profilesHighchartsLoader.loading = false;
+                            // called asynchronously if an error occurs or
+                            //server returns response with an error status.
+                            scope.error = response.data;
+                        }); // end $http().then()
+                    }); // end $(function())
+                } // end link
+            } // end return
+        }]);
+    */
 
     app.directive('maClusterCharts', ['$http','ajaxService', function($http, ajaxService) {
 
@@ -558,25 +556,31 @@ jQuery.noConflict();
 
             if (angular.isArray(items)) {
                 items.forEach(function(item, index) {
+
                     // remove WVGA copy
                     if(item.name.toString().toLowerCase().indexOf('_') !== -1){
                          items.splice(index, 1);
                     }
+
                     // increment videos counter
                     if(item.name.charAt(0).toLowerCase() == 'v') videos++;
-                    // increment chat or profile pics counter
-                    else {
+
+                    // increment pics counters
+                    else{
+                        // increment profile pics counter
                         if(item.moderator == 0) profilePics++;
-                        else chatPics++;
+
+                        // increment profile pics counter
+                        if(item.moderator == 1) chatPics++;
                     }
                 });
 
-                if(profilePics > 0) out += profilePics + ' profile pics. ';
-                if(chatPics > 0) out += chatPics + ' chat pics. ';
-                if(videos > 0) out += videos + ' videos.';
+                if(profilePics > 0) out += profilePics + ' profile pics<br>';
+                if(chatPics > 0) out += chatPics + ' chat pics<br>';
+                if(videos > 0) out += videos + ' videos';
 
             } else {
-                // Let the output be the input untouched
+                // do nothing
                 out = items;
             }
             return out;
@@ -788,7 +792,7 @@ jQuery.noConflict();
         $scope.customer             = {};
 
         // for demo version: disabled 'touchy' options
-        if($scope.user.session.demo){
+        if($scope.us.demo){
 
             $(".demo").each(function(index){
                 $(this).attr('title', 'Nicht verfügbar im Demo-Modus');
@@ -798,7 +802,7 @@ jQuery.noConflict();
 
         // get countries
         ajaxService.fn(
-            $scope.user.session.ajaxurl,    // URL
+            $scope.us.ajaxurl,    // URL
             {'countries':1},                // Parameters
             function (response) {           // Callback function
                 if(response.status == 200){
@@ -813,7 +817,7 @@ jQuery.noConflict();
 
         // get pools
         ajaxService.fn(
-            $scope.user.session.ajaxurl,    // URL
+            $scope.us.ajaxurl,    // URL
             {'pools':1},                    // Parameters
             function (response) {           // Callback function
 
@@ -844,7 +848,7 @@ jQuery.noConflict();
         $scope.getAllProfiles = function(){
 
             ajaxService.fn(
-                $scope.user.session.ajaxurl,    // URL
+                $scope.us.ajaxurl,    // URL
                 { 'allProfiles': 1}, // Parameters
                 function (response) {           // Callback function
 
@@ -866,14 +870,14 @@ jQuery.noConflict();
         $scope.getProfiles = function(hidden){
 
             // authentication check
-            if($scope.user.session.auth){
+            if($scope.us.auth){
 
                 // display message "Loading profiles..." in navbar
                 $('#alert').html('Wird geladen ...').css("color","#47a447");
 
                 // load profiles
                 ajaxService.fn(
-                    $scope.user.session.ajaxurl,    // URL
+                    $scope.us.ajaxurl,    // URL
                     { 'profiles': 1, 'hidden': hidden, 'since': $scope.since.selected.months, 'poolID': $scope.poolSelection.selected.poolID }, // Parameters
                     function (response) {           // Callback function
 
@@ -930,7 +934,7 @@ jQuery.noConflict();
                 $('#alert').html('Wird geladen ...').css("color","#47a447");
 
                 ajaxService.fn(
-                    $scope.user.session.ajaxurl,    // URL
+                    $scope.us.ajaxurl,    // URL
                     { 'users': 1 },              // Parameters
                     function (response) {           // Callback function
                         if(response.status == 200){
@@ -952,7 +956,7 @@ jQuery.noConflict();
         $scope.getProfile = function (profileID) {
 
             ajaxService.fn(
-                $scope.user.session.ajaxurl,    // URL
+                $scope.us.ajaxurl,    // URL
                 { 'profileID': profileID },     // Parameters
                 function (response) {           // Callback function
                     if(response.status == 200){
@@ -1040,7 +1044,7 @@ jQuery.noConflict();
 
         $scope.emptyChatForm = function(mobileID){
 
-            $scope.switchViews.mobileID = mobileID;
+            $scope.switchViews.mobileID = mobileID; // this will submit mobileID to validateForm2()
             $('#selected-name').val('');
             $('#fake-profileID').val('');
             $scope.messages = [];
@@ -1061,7 +1065,7 @@ jQuery.noConflict();
             $('#customerNameError').html('');
 
             // submitting a long MSISDN
-            if ($scope.toggle.toggling || !$scope.user.session.admin) {
+            if ($scope.toggle.toggling || !$scope.us.admin) {
 
                 if (!$("#msisdn_long").val()) {
                     $("#msisdn_longError").html('Bitte füllen Sie das Eingabefeld aus');
@@ -1083,7 +1087,7 @@ jQuery.noConflict();
 
                     $http({
                         method: 'POST',
-                        url: $scope.user.session.ajaxurl,
+                        url: $scope.us.ajaxurl,
                         data: { msisdn_long: $("#msisdn_long").val() }
                     }).then(function successCallback(response) {
                         $scope.messages = response.data;
@@ -1115,7 +1119,7 @@ jQuery.noConflict();
                     // Get list of senders msisdn for the selected profileID
                     $http({
                         method: 'POST',
-                        url: $scope.user.session.ajaxurl,
+                        url: $scope.us.ajaxurl,
                         data: { fakeProfileID: $("#fake-profileID").val() }
                     }).then(function successCallback(response) {
 
@@ -1144,7 +1148,7 @@ jQuery.noConflict();
                         ajaxService.fn(
 
                             // get customer
-                            $scope.user.session.ajaxurl,    // URL
+                            $scope.us.ajaxurl,    // URL
 
                             { 'customerName': $("#customerName").val() },     // Parameters
 
@@ -1158,7 +1162,7 @@ jQuery.noConflict();
                                     // load chats from the customers
                                     $http({
                                       method: 'POST',
-                                      url: $scope.user.session.ajaxurl,
+                                      url: $scope.us.ajaxurl,
 
                                       data: { mobileID: $scope.customer.mobileID }
 
@@ -1242,9 +1246,11 @@ jQuery.noConflict();
 
                         $http({
                           method: 'POST',
-                          url: $scope.user.session.ajaxurl,
+                          url: $scope.us.ajaxurl,
                           data: { msisdn: $("#msisdn").val(), imsi: $("#imsi").val(), mobileID: $("#mobileID").val() }
                         }).then(function successCallback(response){
+
+                            console.log(response.data[response.data.length - 2]);
 
                             $scope.chatProfiles = response.data;
 
@@ -1294,7 +1300,7 @@ jQuery.noConflict();
                     // get Chat
                     $http({
                         method: 'POST',
-                        url: $scope.user.session.ajaxurl,
+                        url: $scope.us.ajaxurl,
                         data: { fakeProfileID: $("#fake-profileID").val(), msisdn: $('#msisdn').val(), imsi: $('#imsi').val(), mobileID: $('#mobileID').val() ? $('#mobileID').val() : $scope.customer.mobileID }
                     })
                     .then(function successCallback(response) {
@@ -1319,7 +1325,7 @@ jQuery.noConflict();
         $scope.getCustomer = function (profileID) {
 
             ajaxService.fn(
-                $scope.user.session.ajaxurl,    // URL
+                $scope.us.ajaxurl,    // URL
                 { 'profileID': profileID },     // Parameters
                 function (response) {           // Callback function
                     if(response.status == 200){
@@ -1336,7 +1342,7 @@ jQuery.noConflict();
         $scope.getCustomerByName = function (name) {
 
             ajaxService.fn(
-                $scope.user.session.ajaxurl,    // URL
+                $scope.us.ajaxurl,    // URL
                 { 'customerName': name },     // Parameters
                 function (response) {           // Callback function
                     if(response.status == 200){
@@ -1417,7 +1423,7 @@ jQuery.noConflict();
                     }
             };
             ajaxService.fn(
-                $scope.user.session.ajaxurl,
+                $scope.us.ajaxurl,
                 ajaxData,
                 function (response) {
 
@@ -1540,7 +1546,7 @@ jQuery.noConflict();
             // Ajax request
             $http({
                 method: 'POST',
-                url: $scope.user.session.ajaxurl,
+                url: $scope.us.ajaxurl,
                 data: { top50users: active, from: $scope.dateTop50.from, to: $scope.dateTop50.to }
             }).then(function successCallback(response) {
                 $scope.top50Users = response.data;
@@ -1564,7 +1570,7 @@ jQuery.noConflict();
 
             $http({
                 method: 'POST',
-                url: $scope.user.session.ajaxurl,
+                url: $scope.us.ajaxurl,
                 data: { active: active, period: period, amount: amount_MOs, from: $scope.dateUsersStats.from, to: $scope.dateUsersStats.to  }
             }).then(function successCallback(response) {
                 $scope.userstats = response.data;
@@ -1606,7 +1612,7 @@ jQuery.noConflict();
                 };
 
                 ajaxService.fn(
-                    $scope.user.session.ajaxurl,
+                    $scope.us.ajaxurl,
                     ajaxData,
                     function (response) {
                         if(response.status == 200){
@@ -1781,7 +1787,7 @@ jQuery.noConflict();
                 };
 
                 ajaxService.fn(
-                    $scope.user.session.ajaxurl,
+                    $scope.us.ajaxurl,
                     ajaxData,
                     function (response) {
                         if(response.status == 200){
@@ -1940,7 +1946,7 @@ jQuery.noConflict();
                 };
 
                 ajaxService.fn(
-                    $scope.user.session.ajaxurl,    // URL
+                    $scope.us.ajaxurl,    // URL
                     ajaxData,                    // Parameters
                     function (response) {           // Callback function
 
@@ -2090,7 +2096,7 @@ jQuery.noConflict();
                 $scope.clusteringloader = { loading: true };
 
                 ajaxService.fn(
-                    $scope.user.session.ajaxurl,      // URL
+                    $scope.us.ajaxurl,      // URL
                     {'clustering':$scope.clustering}, // Parameters
                     function (response) {             // Callback function
                         if(response.status == 200){
@@ -2236,7 +2242,7 @@ jQuery.noConflict();
 
             $http({
                 method: 'POST',
-                url: $scope.user.session.ajaxurl,
+                url: $scope.us.ajaxurl,
                 data: {
                     lifetime: $scope.life.selected.users,
                     from: $scope.lifetimeDates.dateFrom + ' 00:00:00.000000',
@@ -2494,7 +2500,7 @@ jQuery.noConflict();
         $scope.updatePool = function(id, name, portal){
 
             // not allowed in demo mode
-            if(!$scope.user.session.demo){
+            if(!$scope.us.demo){
 
                 // prepare ajax data
                 var ajaxData = {
@@ -2506,7 +2512,7 @@ jQuery.noConflict();
                 };
 
                 ajaxService.fn(
-                    $scope.user.session.ajaxurl,
+                    $scope.us.ajaxurl,
                     ajaxData,
                     function (response) {
                         if(response.status == 200){
@@ -2549,7 +2555,7 @@ jQuery.noConflict();
             else{
 
                 // not allowed in demo mode
-                if(!$scope.user.session.demo){
+                if(!$scope.us.demo){
 
                     // prepare ajax data
                     var ajaxData = {
@@ -2562,7 +2568,7 @@ jQuery.noConflict();
                     };
 
                     ajaxService.fn(
-                        $scope.user.session.ajaxurl,
+                        $scope.us.ajaxurl,
                         ajaxData,
                         function (response) {
                             if(response.status == 200){
@@ -2593,7 +2599,7 @@ jQuery.noConflict();
         $scope.copyPool = function(destPoolId, srcPoolId){
 
             // not allowed in demo mode
-            if(!$scope.user.session.demo){
+            if(!$scope.us.demo){
 
                 // prepare ajax data
                 var ajaxData = {
@@ -2603,7 +2609,7 @@ jQuery.noConflict();
                 };
 
                 // get active profiles list by poolID
-                ajaxService.fn($scope.user.session.ajaxurl, ajaxData,
+                ajaxService.fn($scope.us.ajaxurl, ajaxData,
                     function (response) {
                         if(response.status == 200){
 
@@ -2632,7 +2638,7 @@ jQuery.noConflict();
                                 };
 
                                 ajaxService.fn(
-                                    $scope.user.session.ajaxurl,
+                                    $scope.us.ajaxurl,
                                     ajaxData,
                                     function (response) {
                                         if(response.status == 200){
@@ -2680,7 +2686,7 @@ jQuery.noConflict();
             };
 
             ajaxService.fn(
-                $scope.user.session.ajaxurl,
+                $scope.us.ajaxurl,
                 ajaxData,
                 function (response) {
                     if(response.status == 200){
@@ -2706,7 +2712,7 @@ jQuery.noConflict();
             };
 
             ajaxService.fn(
-                $scope.user.session.ajaxurl,
+                $scope.us.ajaxurl,
                 ajaxData,
                 function (response) {
                     if(response.status == 200){
@@ -2734,7 +2740,7 @@ jQuery.noConflict();
 
         $scope.getProfileNewTab = function(profileID){
 
-            var url = $scope.user.session.editProfileUrl;
+            var url = $scope.us.editProfileUrl;
             var pos = url.indexOf("=");
             var output = url.substr(0, pos+1) + profileID + '&' + url.substr(pos+1);
 
@@ -2748,7 +2754,7 @@ jQuery.noConflict();
         $scope.copyProfile = function(poolId, profileId, profileName){
 
             // not allowed in demo mode
-            if(!$scope.user.session.demo){
+            if(!$scope.us.demo){
 
                 // check if profile name allready exists in destination pool
                 var ajaxData = { // prepare ajax data
@@ -2758,7 +2764,7 @@ jQuery.noConflict();
                         }
                 };
                 ajaxService.fn(
-                    $scope.user.session.ajaxurl,
+                    $scope.us.ajaxurl,
                     ajaxData,
                     function (response) {
 
@@ -2776,7 +2782,7 @@ jQuery.noConflict();
 
                         } else {
 
-                            var url = $scope.user.session.editProfileUrl;
+                            var url = $scope.us.editProfileUrl;
 
                             var pos = url.indexOf("&");
 
@@ -2794,7 +2800,7 @@ jQuery.noConflict();
         $scope.deleteProfile = function(profileId){
 
             // not allowed in demo mode
-            if(!$scope.user.session.demo){
+            if(!$scope.us.demo){
 
                 // prepare ajax data
                 var ajaxData = {
@@ -2803,7 +2809,7 @@ jQuery.noConflict();
                         }
                 };
                 ajaxService.fn(
-                    $scope.user.session.ajaxurl,
+                    $scope.us.ajaxurl,
                     ajaxData,
                     function (response) {
 
@@ -2847,7 +2853,7 @@ jQuery.noConflict();
             };
 
             ajaxService.fn(
-                $scope.user.session.ajaxurl,
+                $scope.us.ajaxurl,
                 ajaxData,
                 function (response) {
                     if(response.status == 200){
@@ -2864,12 +2870,11 @@ jQuery.noConflict();
         };
 
         $scope.home = function(){
-            window.location.href = $scope.user.session.url;
+            window.location.href = $scope.us.url;
         };
 
-        // scroll to top
+        // scroll to top - scrollToTop
         $scope.scroll = function(){
-            console.log('ici');
             window.scrollTo(0,0);
           };
 
@@ -3077,7 +3082,7 @@ jQuery.noConflict();
 
                 $http({
                     method: 'POST',
-                    url: $scope.user.session.ajaxurl,
+                    url: $scope.us.ajaxurl,
                     data: { project: $("#project").val(), 'event': $('#event').val() }
                 }).then(function successCallback(response) {
                     (function() {
@@ -3123,7 +3128,7 @@ jQuery.noConflict();
         $scope.getProfile = function (profileID) {
 
             ajaxService.fn(
-                $scope.user.session.ajaxurl,    // URL
+                $scope.us.ajaxurl,    // URL
                 { 'profileID': profileID },               // Parameters
                 function (response) {           // Callback function
                     if(response.status == 200){
@@ -3131,7 +3136,7 @@ jQuery.noConflict();
 
                         // add default image
                         if($scope.profile.images.length == 0){
-                            $scope.profile.images.push($scope.user.session.defaultPictureUrl);
+                            $scope.profile.images.push($scope.us.defaultPictureUrl);
                         }
 
 
@@ -3144,7 +3149,7 @@ jQuery.noConflict();
             );
         };
 
-        $scope.getProfile($scope.user.session.profileID);
+        $scope.getProfile($scope.us.profileID);
 
 
         // get profile images page
@@ -3191,7 +3196,7 @@ jQuery.noConflict();
         $scope.getProfile = function (profileID) {
 
             ajaxService.fn(
-                $scope.user.session.ajaxurl,    // URL
+                $scope.us.ajaxurl,    // URL
                 { 'profileID': profileID },               // Parameters
                 function (response) {           // Callback function
                     if(response.status == 200){
@@ -3204,7 +3209,7 @@ jQuery.noConflict();
             );
         };
 
-        $scope.getProfile($scope.user.session.profileID);
+        $scope.getProfile($scope.us.profileID);
 
         // copy to clipboard
         $scope.copyToClipboard = function(i, name){
@@ -3341,36 +3346,12 @@ jQuery.noConflict();
     }]); // End pageCtrl
 
 
-    // add additional button 'upload_a_file' (additional picture in edit_profile view)
-    $('#add_btn').click(function(){
-
-        var $clone = $('#hidden_btn').clone(true, true).attr('id','').removeClass('hidden');
-        $('#hidden_btn').before($clone);
-        var $clone = $('#hidden_checkbox').clone(true, true).attr('id','').removeClass('hidden');
-        $('#hidden_btn').before($clone);
-        var $clone = $('#hidden_label').clone(true, true).attr('id','').removeClass('hidden');
-        $('#hidden_btn').before($clone);
-        var $clone = $('#hidden_thumb_checkbox').clone(true, true).attr('id','').removeClass('hidden');
-        $('#hidden_btn').before($clone);
-        var $clone = $('#hidden_thumb_label').clone(true, true).attr('id','').removeClass('hidden');
-        $('#hidden_btn').before($clone);
-    });
-
-    // add additional button 'upload_a_file' (additional video in edit_profile view)
-    $('#add_vid_btn').click(function(){
-        var $clone = $('#vid_hidden_btn').clone().attr('id','').removeClass('hidden');
-        $('#vid_hidden_btn').before($clone);
-    });
-
-    // dropdown submenu
-    $('.dropdown-submenu a.test').on("click", function(e){
-        $(this).next('ul').toggle();
-        e.stopPropagation();
-        e.preventDefault();
-      });
-
-    // Activate Tooltipster
+    /*
+     *  jQuery events and function
+     */
     $(document).ready(function() {
+
+        // Activate Tooltipster
         $('.tooltipster-bottom').tooltipster({
             position: 'bottom',
             contentAsHTML: true,
@@ -3390,83 +3371,88 @@ jQuery.noConflict();
             delay: 50
         });
 
+        // Enable Tooltipster in bootstrap table elements
         var tooltipInstance;
-         $("body").on('mouseover', '.demo:not(.tooltipstered)', function(){
-             tooltipInstance = $(this).tooltipster({
-                 contentCloning: true,
-                 contentAsHTML : true,
-                 side : "top"
-             });
-             tooltipInstance.tooltipster('open');
-         });
-    });
+        $("body").on('mouseover', '.demo:not(.tooltipstered)', function(){
+            tooltipInstance = $(this).tooltipster({
+                contentCloning: true,
+                contentAsHTML : true,
+                side : "top"
+            });
+            tooltipInstance.tooltipster('open');
+        });
 
-    // fade and remove flash message div
-    setTimeout(function(){
-        $('#flash').fadeOut(2000,function(){$(this).remove();});
+        // add a new upload-file system button (video upload div)
+        $('#add_vid_btn').click(function(){
+            var $clone = $('#vid_hidden_btn').clone().attr('id','').removeClass('hidden');
+            $('#vid_hidden_btn').before($clone);
+        });
+
+        // fade and remove flash message
+        setTimeout(function(){
+            $('#flash').fadeOut(2000,function(){$(this).remove();});
         },5000);
 
-    function longestCommonSubstring(str1, str2){
-        if (!str1 || !str2)
-            return {
-                length: 0,
-                sequence: "",
-                offset: 0
-            };
+        function longestCommonSubstring(str1, str2){
+            if (!str1 || !str2)
+                return {
+                    length: 0,
+                    sequence: "",
+                    offset: 0
+                };
 
-        var sequence = "",
-            str1Length = str1.length,
-            str2Length = str2.length,
-            num = new Array(str1Length),
-            maxlen = 0,
-            lastSubsBegin = 0;
+            var sequence = "",
+                str1Length = str1.length,
+                str2Length = str2.length,
+                num = new Array(str1Length),
+                maxlen = 0,
+                lastSubsBegin = 0;
 
-        for (var i = 0; i < str1Length; i++) {
-            var subArray = new Array(str2Length);
-            for (var j = 0; j < str2Length; j++)
-                subArray[j] = 0;
-            num[i] = subArray;
-        }
-        var thisSubsBegin = null;
-        for (var i = 0; i < str1Length; i++)
-        {
-            for (var j = 0; j < str2Length; j++)
+            for (var i = 0; i < str1Length; i++) {
+                var subArray = new Array(str2Length);
+                for (var j = 0; j < str2Length; j++)
+                    subArray[j] = 0;
+                num[i] = subArray;
+            }
+            var thisSubsBegin = null;
+            for (var i = 0; i < str1Length; i++)
             {
-                if (str1[i] !== str2[j])
-                    num[i][j] = 0;
-                else
+                for (var j = 0; j < str2Length; j++)
                 {
-                    if ((i === 0) || (j === 0))
-                        num[i][j] = 1;
+                    if (str1[i] !== str2[j])
+                        num[i][j] = 0;
                     else
-                        num[i][j] = 1 + num[i - 1][j - 1];
-
-                    if (num[i][j] > maxlen)
                     {
-                        maxlen = num[i][j];
-                        thisSubsBegin = i - num[i][j] + 1;
-                        if (lastSubsBegin === thisSubsBegin)
-                        {//if the current LCS is the same as the last time this block ran
-                            sequence += str1[i];
-                        }
-                        else //this block resets the string builder if a different LCS is found
+                        if ((i === 0) || (j === 0))
+                            num[i][j] = 1;
+                        else
+                            num[i][j] = 1 + num[i - 1][j - 1];
+
+                        if (num[i][j] > maxlen)
                         {
-                            lastSubsBegin = thisSubsBegin;
-                            sequence= ""; //clear it
-                            sequence += str1.substr(lastSubsBegin, (i + 1) - lastSubsBegin);
+                            maxlen = num[i][j];
+                            thisSubsBegin = i - num[i][j] + 1;
+                            if (lastSubsBegin === thisSubsBegin)
+                            {//if the current LCS is the same as the last time this block ran
+                                sequence += str1[i];
+                            }
+                            else //this block resets the string builder if a different LCS is found
+                            {
+                                lastSubsBegin = thisSubsBegin;
+                                sequence= ""; //clear it
+                                sequence += str1.substr(lastSubsBegin, (i + 1) - lastSubsBegin);
+                            }
                         }
                     }
                 }
             }
+            return {
+                length: maxlen,
+                sequence: sequence,
+                offset: thisSubsBegin
+            };
         }
-        return {
-            length: maxlen,
-            sequence: sequence,
-            offset: thisSubsBegin
-        };
-    }
-
-
+    });
 })(jQuery);
 
 

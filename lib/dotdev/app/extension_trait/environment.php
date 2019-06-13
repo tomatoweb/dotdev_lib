@@ -1,5 +1,3 @@
-<?php
-/*****
  * Version 1.0.2019-02-07
 **/
 namespace dotdev\app\extension_trait;

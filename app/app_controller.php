@@ -22,6 +22,8 @@ use \dotdev\app\bragi\event;
 use \dotdev\nexus\base;
 
 class controller {
+
+	// Les traits permettent de faire de l'héritage multiple (en POO classique une Classe ne peut hériter que d'une seule Classe - extends)
 	use \tools\router_trait,
 		\dotdev\app\extension_trait\usersession,
 		\dotdev\app\extension_trait\environment,
@@ -50,9 +52,8 @@ class controller {
 		// init environment
 		if(!$this->env_init()) $this->env_exit_with_maintenance_site(null, 'env_init() failed');
 
-		// get preset name
+		// extract preset name from presetID (cherry_de --> cherry)
 		$this->us_set(['preset_name' => substr($this->env_get('domain:presetID'), 0, -3)]);
-
 
 		// Language preference
 		if(h::cR('lang', '~^(de|en|hu|cz)$')){
@@ -559,6 +560,7 @@ class controller {
 						    'scheme'		=> $this->env_get('preset:scheme:'.$this->us_get('preset_name')),
 						    'smsversion'	=> $this->us_get('sms') ?? null,
 						    'mobileID'		=> $this->us_get('mobileID'),
+						    'IP'			=> $_SERVER['REMOTE_ADDR']
 						));
 
 						// log event "tan checked"
@@ -616,6 +618,7 @@ class controller {
 		    'lang' 			=> $lang,
 		    'scheme'		=> $this->env_get('preset:scheme:'.$this->us_get('preset_name')),
 		    'page'			=> $suburl,
+		    'IP'			=> $_SERVER['REMOTE_ADDR']
 		));
 
 		// log event "tan checked"
@@ -1025,7 +1028,7 @@ class controller {
 			}
 
 		// if POST then it is a profile Form submission. Create or update a profile (incl. images)
-		if(postdata::get()) {
+		if($_POST) {
 
 			// Create new profile
 			if(!$opt['profileID']) {
@@ -1722,7 +1725,7 @@ class controller {
 				// Its a video file
 				if(substr($image->name, 0, 1) == 'v'){
 
-					// delete from server directory
+					//  Is not proceed in media::delete_profile_media : delete video from server directory
 					if(file_exists($_SERVER['DATA_PATH'].'/bragiprofile/profile/ProfileID_'.$opt['profileID'].'/videos/'.$image->name)){
 						unlink($_SERVER['DATA_PATH'].'/bragiprofile/profile/ProfileID_'.$opt['profileID'].'/videos/'.$image->name);
 						}
@@ -1735,7 +1738,7 @@ class controller {
 				// Its an image file
 				else{
 
-					// delete from server directory
+					// Is also proceed in media::delete_profile_media : delete from server directory
 					if(file_exists($_SERVER['DATA_PATH'].'/bragiprofile/profile/ProfileID_'.$opt['delete_image']->profileID.'/'.$image->name)){
 						unlink($_SERVER['DATA_PATH'].'/bragiprofile/profile/ProfileID_'.$opt['delete_image']->profileID.'/'.$image->name);
 						}
@@ -1745,8 +1748,8 @@ class controller {
 					}
 
 				// and delete from database
-				$result = image::delete(['imageID'=>$image->imageID]);
-				if($result->status != 200){
+				$result = media::delete_profile_media(['imageID'=>$image->imageID]);
+				if($result->status != 204){
 					e::logtrigger('image '.$opt["delete_image"]->imageID.' could be deleted from database');
 					}
 
@@ -1779,6 +1782,23 @@ class controller {
 							}
 						}
 					}
+
+				// get updated profile
+				$result = profile::get([
+					'profileID' => $opt['delete_image']->profileID,
+					]);
+
+				// on error
+				if(!in_array($result->status, [200, 404])){
+					return self::response(500, 'profile could not be loaded '.$result->status);
+					}
+
+				// not found
+				elseif ($result->status == 404) {
+					return self::response(204, 'profile not found '.$result->status);
+					}
+
+				$profile = $result->data;
 
 				// forward result
 				$res = (object)[
