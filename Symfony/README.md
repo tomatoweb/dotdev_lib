@@ -15,7 +15,7 @@ load helper Class
 
 namespace  
 `use tools\helper as h;`  
-`echo "<pre>".h::encode_php(scandir(__DIR__));die;`
+`echo "<pre>".h::encode_php($anything);die;`
 
 Will display any variable of any type in a human friendly readable format
 
