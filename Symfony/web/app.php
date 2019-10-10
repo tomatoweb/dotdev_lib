@@ -10,8 +10,8 @@ require $_SERVER["DOCUMENT_ROOT"] . '../lib/tools/helper.php';
 use tools\helper as h;
 
 // list current directory 
-//echo'<pre>'.h::encode_php(scandir(__DIR__)).'</pre>'; // scandir = ls
-//die(); 
+echo'<pre>'.h::encode_php(scandir(__DIR__)).'</pre>'; // scandir = ls
+die; 
 
 $loader = require_once __DIR__.'/../app/bootstrap.php.cache';
 

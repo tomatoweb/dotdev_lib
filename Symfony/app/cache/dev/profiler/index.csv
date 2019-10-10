@@ -7,3 +7,6 @@ a868ea,127.0.0.1,GET,http://virtualhost/Symfony/web/,1570023673,,200
 226dfb,127.0.0.1,GET,http://dotdev/Symfony/web/,1570709078,,200
 53328d,127.0.0.1,GET,http://dotdev/Symfony/web/paradigm,1570709146,,301
 a8cebb,127.0.0.1,GET,http://dotdev/Symfony/web/paradigm/,1570709146,,200
+c8604c,127.0.0.1,GET,http://dotdev/Symfony/web/paradigm/,1570711261,,200
+def7eb,127.0.0.1,GET,http://dotdev/Symfony/web/paradigm/,1570711311,,200
+559ced,127.0.0.1,GET,http://dotdev/Symfony/web/paradigm/,1570711354,,200
