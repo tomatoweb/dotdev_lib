@@ -195,6 +195,11 @@ class appDevUrlMatcher extends Symfony\Bundle\FrameworkBundle\Routing\Redirectab
 
             }
 
+            // acme_paradigm_default_index_2
+            if ($pathinfo === '/paradigm/blabla') {
+                return array (  '_controller' => 'Acme\\ParadigmBundle\\Controller\\DefaultController::indexAction',  '_route' => 'acme_paradigm_default_index_2',);
+            }
+
             // cms
             if ($pathinfo === '/paradigm/cms') {
                 return array (  '_controller' => 'Acme\\ParadigmBundle\\Controller\\DefaultController::cmsAction',  '_route' => 'cms',);

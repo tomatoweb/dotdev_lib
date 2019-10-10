@@ -2,4 +2,4 @@ _assetic:
     resource: .
     type: assetic
 _app:
-    resource: 'G:\Backup_USB_16-04-2019\www\Symfony\app/config/routing_dev.yml'
+    resource: 'C:\Users\jean\Desktop\dotdev_lib\Symfony\app/config/routing_dev.yml'

@@ -7,6 +7,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Acme\ParadigmBundle\Entity\works;
 use Acme\ParadigmBundle\Entity\images;
 use Acme\ParadigmBundle\Entity\users;
+use tools\helper as h; // Own helper
 
 class DefaultController extends Controller {
     
@@ -14,15 +15,20 @@ class DefaultController extends Controller {
      * @Route("/", name="home")
      * @Route("/index.html")
      * @Route("/index.php")
+     * @Route("/blabla")
      */
     public function indexAction(Request $request ){
+        
+        // DEBUG
+        echo "<pre>".h::encode_php('ici');die;
         
         // AUTO LOGON ------------------------------------- 
         $user = new users;
         $user->setUsername('user')->setPassword(sha1('user'));        
-        $request->getSession()->set('auth', $user);             // PHP brut: $_SESSION['auth'] = $user
+        $request->getSession()->set('auth', $user);             // PHP native: $_SESSION['auth'] = $user
         $request->getSession()->set('token', md5('bvjhgmbc'));
         // END AUTO LOGON --------------------------------- */
+        
         /* IS LOGGED? ------------------------------------- */
         if ( !$request->getSession()->get('auth')){   // ou $this->get('session')->get('auth')        
                 return $this->forward('ParadigmBundle:Default:login');                                    
@@ -43,6 +49,7 @@ class DefaultController extends Controller {
         $request->getSession()->set('auth', $user); // PHP brut: $_SESSION['auth'] = $user
         $request->getSession()->set('token', md5('bvjhgmbc'));
          END AUTO LOGON --------------------------------- */
+        
         /* IS LOGGED? ------------------------------------- */
         if ( !$request->getSession()->get('auth')){            
                 return $this->forward('ParadigmBundle:Default:login');                                    
@@ -50,13 +57,18 @@ class DefaultController extends Controller {
         /* END IS_LOGGED --------------------------------- */
         
         $em = $this->getDoctrine()->getManager();
-        if ( ! $request->query->get('category')){     // PHP brut: if (isset($_GET['category']))
+        
+        if ( ! $request->query->get('category')){     // PHP native: if (isset($_GET['category']))
             $works = $em->getRepository('ParadigmBundle:works')->findAll();                        
-        }  else {
+        }  
+        else {
             $works = $em->getRepository('ParadigmBundle:works')->findBy(array('categoryId' => $request->query->get('category')));
-        }         
+        }
+        
         $categories = $em->getRepository('ParadigmBundle:categories')->findBy(array(), array('id' => 'ASC'));
+        
         $images = array();
+        
         foreach ($works as $work){
             $imageId = $work->getImageId();
             if( $imageId == NULL) {
