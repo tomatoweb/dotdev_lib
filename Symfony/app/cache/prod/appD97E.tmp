@@ -33,7 +33,7 @@
     <parameter key="mailer_transport">gmail</parameter>
     <parameter key="mailer_host">127.0.0.1</parameter>
     <parameter key="mailer_user">t301020@gmail.com</parameter>
-    <parameter key="mailer_password">Kaboumpouet1</parameter>
+    <parameter key="mailer_password"></parameter>
     <parameter key="locale">en</parameter>
     <parameter key="secret">ThisTokenIsNotSoSecretChangeIt</parameter>
     <parameter key="controller_resolver.class">Symfony\Bundle\FrameworkBundle\Controller\ControllerResolver</parameter>
@@ -354,7 +354,7 @@
     <parameter key="swiftmailer.mailer.default.transport.smtp.port">465</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.host">smtp.gmail.com</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.username">t301020@gmail.com</parameter>
-    <parameter key="swiftmailer.mailer.default.transport.smtp.password">Kaboumpouet1</parameter>
+    <parameter key="swiftmailer.mailer.default.transport.smtp.password"></parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.auth_mode">login</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.timeout">30</parameter>
     <parameter key="swiftmailer.mailer.default.transport.smtp.source_ip">null</parameter>
@@ -2927,7 +2927,7 @@
               <argument>t301020@gmail.com</argument>
             </call>
             <call method="setPassword">
-              <argument>Kaboumpouet1</argument>
+              <argument></argument>
             </call>
             <call method="setAuthMode">
               <argument>login</argument>

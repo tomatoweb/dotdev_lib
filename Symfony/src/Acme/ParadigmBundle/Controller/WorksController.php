@@ -98,7 +98,7 @@ class WorksController extends Controller {
                     /*
                     // UPLOAD IMAGES ON SERVER
                     $ftp = ftp_connect("monalisacreations.homepage.t-online.de", 21);                    
-                    ftp_login($ftp, "admin@monalisacreations.homepage.t-online.de", "Kaboumpouet1");
+                    ftp_login($ftp, "admin@monalisacreations.homepage.t-online.de", "");
                     if(ftp_pasv($ftp, true)) {
                       ftp_put($ftp, "web/bundles/paradigm/img/works/".$image_name, $image_tmp_name, FTP_BINARY); // upload image
                        

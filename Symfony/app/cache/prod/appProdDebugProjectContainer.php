@@ -2825,7 +2825,7 @@ class appProdDebugProjectContainer extends Container
     {
         $a = new \Swift_Transport_Esmtp_AuthHandler(array(0 => new \Swift_Transport_Esmtp_Auth_CramMd5Authenticator(), 1 => new \Swift_Transport_Esmtp_Auth_LoginAuthenticator(), 2 => new \Swift_Transport_Esmtp_Auth_PlainAuthenticator()));
         $a->setUsername('t301020@gmail.com');
-        $a->setPassword('Kaboumpouet1');
+        $a->setPassword('');
         $a->setAuthMode('login');
 
         $this->services['swiftmailer.mailer.default.transport.real'] = $instance = new \Swift_Transport_EsmtpTransport(new \Swift_Transport_StreamBuffer(new \Swift_StreamFilters_StringReplacementFilterFactory()), array(0 => $a), $this->get('swiftmailer.mailer.default.transport.eventdispatcher'));
@@ -3919,7 +3919,7 @@ class appProdDebugProjectContainer extends Container
             'mailer_transport' => 'gmail',
             'mailer_host' => '127.0.0.1',
             'mailer_user' => 't301020@gmail.com',
-            'mailer_password' => 'Kaboumpouet1',
+            'mailer_password' => '',
             'locale' => 'en',
             'secret' => 'ThisTokenIsNotSoSecretChangeIt',
             'controller_resolver.class' => 'Symfony\\Bundle\\FrameworkBundle\\Controller\\ControllerResolver',
@@ -4248,7 +4248,7 @@ class appProdDebugProjectContainer extends Container
             'swiftmailer.mailer.default.transport.smtp.port' => 465,
             'swiftmailer.mailer.default.transport.smtp.host' => 'smtp.gmail.com',
             'swiftmailer.mailer.default.transport.smtp.username' => 't301020@gmail.com',
-            'swiftmailer.mailer.default.transport.smtp.password' => 'Kaboumpouet1',
+            'swiftmailer.mailer.default.transport.smtp.password' => '',
             'swiftmailer.mailer.default.transport.smtp.auth_mode' => 'login',
             'swiftmailer.mailer.default.transport.smtp.timeout' => 30,
             'swiftmailer.mailer.default.transport.smtp.source_ip' => NULL,
