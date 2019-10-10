@@ -1,4 +1,4 @@
-Symfony 2 tips
+Symfony tips
 ==============
 
 Swich between DEV and PROD environment
