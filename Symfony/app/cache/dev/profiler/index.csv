@@ -4,3 +4,6 @@ ea3f36,127.0.0.1,GET,http://virtualhost/Symfony/web/app_dev.php/paradigm/,147981
 1f82b2,127.0.0.1,GET,http://virtualhost/Symfony/web/app_dev.php/paradigm/,1479817407,,200
 a52ebb,127.0.0.1,GET,http://virtualhost/Symfony/web/,1570006745,,200
 a868ea,127.0.0.1,GET,http://virtualhost/Symfony/web/,1570023673,,200
+226dfb,127.0.0.1,GET,http://dotdev/Symfony/web/,1570709078,,200
+53328d,127.0.0.1,GET,http://dotdev/Symfony/web/paradigm,1570709146,,301
+a8cebb,127.0.0.1,GET,http://dotdev/Symfony/web/paradigm/,1570709146,,200

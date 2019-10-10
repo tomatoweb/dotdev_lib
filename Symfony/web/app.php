@@ -4,7 +4,7 @@ use Symfony\Component\ClassLoader\ApcClassLoader;
 use Symfony\Component\HttpFoundation\Request;
 
 // load helper Class
-require $_SERVER["DOCUMENT_ROOT"] . '/phplib/tools/helper.php';
+require $_SERVER["DOCUMENT_ROOT"] . '../lib/tools/helper.php';
 
 // namespace
 use tools\helper as h;
