@@ -19,3 +19,7 @@ namespace
 
 Will display any variable of any type in a human friendly readable format
 
+Line breaks in markdown (.md files)
+-----------------------------------
+Hello <-two spaces  
+World
