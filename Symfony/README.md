@@ -10,6 +10,11 @@ DEV mode displays the Symfony DEBUG TOOLBAR on the bottom (will NOT display with
 
 Own PHP encode tool (from library /lib/tools/helper.php
 -------------------------------------------------------
+load helper Class
+`require $_SERVER["DOCUMENT_ROOT"] . '../lib/tools/helper.php';`
+
+namespace
+`use tools\helper as h;`
 `echo "<pre>".h::encode_php(scandir(__DIR__));die;`
 
 Will display any variable of any type in a human friendly readable format
