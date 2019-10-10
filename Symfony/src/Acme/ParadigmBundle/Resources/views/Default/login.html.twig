@@ -1,0 +1,22 @@
+{% include 'ParadigmBundle:partials:home_header.html.twig' %}
+<!-- FLASH -->
+    {% set flash  = app.session.flashbag.get('flash') %}
+    {% if flash.type is defined %}
+        <div class="alert alert-{{ flash.type }}">{{ flash.message|raw }}</div>    
+    {% endif %}
+        
+<div class="container margin-top-3" style="min-height:597px;">
+    <form action="{{ path('home') }}" method="post">
+        <div class="form-group">
+            <label for="username" style="color:white">Username</label>
+            <input type="text" class="form-control" name="username" value="user" autofocus >
+        </div>
+        <div class="form-group">
+            <label for="password" style="color:white">Password</label>
+            <input type="password" class="form-control" name="password" style="font-family:none;">
+        </div>             
+        <button type="submit" class="btn btn-default">Connect me</button>   
+    </form>
+</div>
+{% include 'ParadigmBundle:partials:home_footer.html.twig' %}
+

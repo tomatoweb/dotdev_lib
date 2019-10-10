@@ -1,0 +1,18 @@
+tuto_blog_homepage:
+    pattern:  /hello/{name}
+    defaults: { _controller: TutoBlogBundle:Default:index }
+tuto_blog_home:
+    pattern: /
+    defaults: { _controller: TutoBlogBundle:Public:index }
+tuto_blog_page:
+    pattern: /page/{id}
+    defaults: { _controller: TutoBlogBundle:Public:page }
+    requirements:
+        page: \d+
+tuto_blog_article:
+    pattern: /article/{lang}/{annee}/{slug}.{format}
+    defaults: { _controller: TutoBlogBundle:Public:article, format:html }
+    requirements:
+        lang: fr|en
+        annee: \d{4}
+        format: html|rss

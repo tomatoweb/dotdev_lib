@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="">
+<meta name="author" content="">
+<title>The International Post</title>
+{#% include 'ParadigmBundle:partials:offline_CSS_JS.html.twig' %#}
+<link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+<link rel="stylesheet" href="{{ asset('bundles/paradigm/css/paradigm.css') }}" type="text/css" />
+<link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet' type='text/css'>
+<link rel="icon" href="{{ asset('bundles/paradigm/img/works/favicon.png') }}">
+<script src="https://www.google.com/recaptcha/api.js?hl=en"></script>
+</head>
+<body style="font-family: 'Roboto', sans-serif;">
+    <div id="cms-container">
+    <div class="navbar bs-docs-nav" id="cms_navbar" role="navigation">
+        <div class="container" id="cms_navbar_container">
+            <div class="navbar-header" style="float:none">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" style="border: 1px solid grey;">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar" style="background-color: grey;"></span>
+                    <span class="icon-bar" style="background-color: grey;"></span>
+                    <span class="icon-bar" style="background-color: grey;"></span>
+                </button>
+                <a class="glyphicon glyphicon-home" id="glyphicon2" href="{{ path('home') }}" title="MonaLisaCreations.de" ></a>
+
+                <!-- Collect the nav links, forms, and other content for toggling -->
+                <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="border-color:none">
+                    <ul class="nav navbar-nav" style="margin-left: 32%;">
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle" >ARTICLES<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('works') }}">Edit an Article</a></li>
+                                <li><a href="{{ path('edit_work') }}">Create a new Article</a></li>
+                            </ul>
+                        </li>
+                        <li class="dropdown">
+                            <a href="#" data-toggle="dropdown" class="dropdown-toggle">CATEGORIES<span class="caret"></span></a>
+                            <ul class="dropdown-menu">
+                                <li><a href="{{ path('categories') }}">Edit a Category</a></li>
+                                <li><a href="{{ path('edit_category') }}">Create a new Category</a></li>
+                            </ul>
+                        </li>
+                    </ul>
+                    <ul class="nav navbar-nav right-zero">
+                        <li>
+                            <a href="{{ path('logout') }}" >logout</a>
+                        </li>
+                    </ul>
+                </div>
+                    <div>
+                        <div id="masterHead" >
+                            <div id="brand">
+                                <span id="masterHeadLogo">
+                                    <img src="{{ asset('bundles/paradigm/img/works/internationalPost.png') }}" alt="International Post" width="700" height="66" style="height: 100%;width: 100%;max-width: 700px;" >
+                                </span>
+                            </div>
+                            <ul id="infobar">
+                                <li class="infobaritem">{{ "now"|date("l, F d. Y") }}</li>
+                            </ul>
+                        </div>
+                        <ul id="cat-list" class="list-inline text-center">
+            {% for category in categories %}
+                            <li><a href="{{ path('cms', {'category':category.id} ) }}">{{ category.name }}</a></li>
+            {% endfor %}
+                            <li><a href="{{ path('cms') }}" class="">All categories</a></li>
+                        </ul>
+                    </div>
+            </div>
+        </div>
+    </div>

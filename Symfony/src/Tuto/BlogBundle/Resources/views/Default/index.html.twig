@@ -1,0 +1,7 @@
+{%extends "::base.html.twig"%}
+
+{%block title%}Titre dans index.html.twig | {{parent()}}{%endblock%}
+{%block body%}
+{{parent()}}
+Hello (from BlogBundle)  {{ name }}!
+{%endblock%}
