@@ -15,6 +15,7 @@ load helper Class
 
 namespace  
 `use tools\helper as h;`  
+
 use with pre tag  
 `echo "<pre>".h::encode_php($anything);die;`
 
