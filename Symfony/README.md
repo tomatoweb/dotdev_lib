@@ -14,8 +14,8 @@ load helper Class
 `require $_SERVER["DOCUMENT_ROOT"] . '../lib/tools/helper.php';`
 
 namespace  
-`use tools\helper as h;`
-use with pre tag
+`use tools\helper as h;`  
+use with pre tag  
 `echo "<pre>".h::encode_php($anything);die;`
 
 Will display any variable of any type in a human friendly readable format
