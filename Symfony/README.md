@@ -1,4 +1,4 @@
-Symfony tips
+Symfony tips from desktop
 ==============
 
 Swich between DEV and PROD environment
