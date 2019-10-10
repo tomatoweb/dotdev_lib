@@ -1,5 +1,5 @@
 Symfony 2 tips
---------------
+==============
 
 Swich between DEV and PROD environment in web/app.php line 32
     $kernel = new AppKernel('prod', true);
