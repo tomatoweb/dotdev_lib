@@ -1,4 +1,4 @@
-Symfony tips todayffff
+Symfony tips
 ============
 
 Swich between DEV and PROD environment
