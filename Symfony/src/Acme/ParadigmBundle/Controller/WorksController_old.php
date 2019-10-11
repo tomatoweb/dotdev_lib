@@ -95,7 +95,19 @@ class WorksController extends Controller {
                     /*
                     // UPLOAD IMAGES ON SERVER
                     $ftp = ftp_connect("monalisacreations.homepage.t-online.de", 21);                    
-                    ftp_login($ftp, "admin@monalisacreations.homepage.t-online.de", "");
+                    ftp_login($ftp, "admin@monalisacreations.homepage.t-online.de", "
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    
+                    ");
                     if(ftp_pasv($ftp, true)) {
                       ftp_put($ftp, "web/bundles/paradigm/img/works/".$image_name, $image_tmp_name, FTP_BINARY);
                        
@@ -146,7 +158,29 @@ class WorksController extends Controller {
         $categories = $this->getDoctrine()->getRepository('ParadigmBundle:categories')->findAll();
         $images = $this->getDoctrine()->getRepository('ParadigmBundle:images')->findBy(array('workId' => $work->getId()));        
         return $this->render('ParadigmBundle:Works:edit_work.html.twig', array('work' => $work, 'categories' => $categories, 'images' => $images)); //NEW WORK
-    }
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    ...}
     
     /**
      * @Route("/works/delete_image", name="delete_image")

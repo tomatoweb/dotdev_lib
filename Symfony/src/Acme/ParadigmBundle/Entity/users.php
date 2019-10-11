@@ -72,4 +72,16 @@ class users {
     public function getPassword()    {
         return $this->password;
     }
+  
+  /**
+     * Get user (for dev purposes only)
+     *
+     * @return users 
+     */
+    public function get(){
+        return array(
+          $this->getUsername(),
+          $this->getPassword()
+        ) ;
+    }
 }
