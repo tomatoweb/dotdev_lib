@@ -8,7 +8,7 @@ BlaBlaCar.com and Spotify.com) and most of the [popular PHP projects][2] (includ
 Drupal and Magento).
 
 
-Symfony tips
+Tips
 ============
 
 Swich between DEV and PROD environment
