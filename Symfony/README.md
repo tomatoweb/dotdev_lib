@@ -11,7 +11,7 @@ Drupal and Magento).
 Tips
 ============
 
-Swich between DEV and PROD environment
+Switch between DEV and PROD environment
 --------------------------------------
 in web/app.php line 32  
     `$kernel = new AppKernel('prod', true)`    
