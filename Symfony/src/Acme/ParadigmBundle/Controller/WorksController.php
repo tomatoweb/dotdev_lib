@@ -197,7 +197,7 @@ class WorksController extends Controller {
      */
     public function admin_loginAction(Request $request){
         
-        if( !$request->request->get("username")){       // PHP brut: if ( ! isset($_POST['username']))
+        if( !$request->request->get("username")){       // PHP native: if ( ! isset($_POST['username']))
             return $this->render('ParadigmBundle:Works:admin_login.html.twig');
         }
         $username = $request->request->get("username");
@@ -207,7 +207,7 @@ class WorksController extends Controller {
         if( !$user){
             $request->getSession() // ou $this->get('session')
                     ->getFlashBag()
-                    ->set("flash", array('type' => 'danger', 'message' => '<strong>access denied, wrong username or password</strong>'));            
+                    ->set("flash", array('type' => 'danger', 'message' => '<strong>wrong username or password</strong>'));            
             return $this->render('ParadigmBundle:Works:admin_login.html.twig');
         }
         $request->getSession()->set('admin_auth', $user);
