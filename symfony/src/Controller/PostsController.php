@@ -14,8 +14,11 @@ class PostsController
      */
     public function index(Environment $twig)
     {
+        //echo (__DIR__); die;
+
         return new Response($twig->render('posts/index.html.twig', [
             'controller_name' => 'PostsController',
+            'env'             => $_ENV
         ]));
     }
 }

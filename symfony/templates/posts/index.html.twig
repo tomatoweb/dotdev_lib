@@ -16,5 +16,25 @@
         <li>Your controller at <code><a href="{{ 'C:/Users/jean/Desktop/dotdev_lib/symfony/src/Controller/PostsController.php'|file_link(0) }}">src/Controller/PostsController.php</a></code></li>
         <li>Your template at <code><a href="{{ 'C:/Users/jean/Desktop/dotdev_lib/symfony/templates/posts/index.html.twig'|file_link(0) }}">templates/posts/index.html.twig</a></code></li>
     </ul>
+
+    {% for key,val in env %} {# from controller #}
+        {{ key }} -> {{ val }} <br>
+    {% endfor %}
+
+
+    <p>Username: {{ app.user.username ?? 'Anonymous user' }}</p>
+    {% if app.debug %}
+        <p>Request method:              {{ app.request.method }}    </p>
+        <p>Application Environment:     {{ app.environment }}       </p>
+    {% endif %}
+
+
+    {% for val in app %} {# from controller #}
+        {{ key }} -> {{ val }} <br>
+    {% endfor %}
+
+
+
+
 </div>
 {% endblock %}
