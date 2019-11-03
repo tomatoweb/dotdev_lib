@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="ee571d7f-5b43-47fb-82a2-fd554bfe58b5" name="Default Changelist" comment="">
 <<<<<<< HEAD
+<<<<<<< HEAD
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/compiler.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/copyright/profiles_settings.xml" />
       <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/encodings.xml" />
@@ -16,6 +17,15 @@
 >>>>>>> ad30270e18782409cb51fc43a037c78d3e341b91
 =======
 >>>>>>> 1fdd7782d5ed3d0d97c067e363927780494625a4
+=======
+      <change beforePath="$PROJECT_DIR$/src/Controller/PostsController.php" beforeDir="false" afterPath="$PROJECT_DIR$/src/Controller/PostsController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/templates/posts/index.html.twig" beforeDir="false" afterPath="$PROJECT_DIR$/templates/posts/index.html.twig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/B2zjJLsDDF/1/J/K7jUc4NMfEUVObHWTY6g" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/B2zjJLsDDF/1/J/K7jUc4NMfEUVObHWTY6g" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/pools/B2zjJLsDDF/S/I/z6qv2C7vEEC7UZL69ESg" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/pools/B2zjJLsDDF/S/I/z6qv2C7vEEC7UZL69ESg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/profiler/index.csv" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/cache/dev/twig/e9/e912cb926a85f6b52c6f666f0757e4380dab20ddb43cb23ab41918e4848046af.php" beforeDir="false" afterPath="$PROJECT_DIR$/var/cache/dev/twig/e9/e912cb926a85f6b52c6f666f0757e4380dab20ddb43cb23ab41918e4848046af.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/var/log/dev.log" beforeDir="false" afterPath="$PROJECT_DIR$/var/log/dev.log" afterDir="false" />
+>>>>>>> 89579a1e856754591d28ef48fe1fd6e9488bd9c8
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -41,6 +51,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
@@ -139,10 +150,18 @@
             <state vertical-scroll-proportion="0.0">
               <caret line="6" column="10" selection-start-line="6" selection-start-column="10" selection-end-line="6" selection-end-column="10" />
               <folding />
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/Controller/PostsController.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="336">
+              <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+>>>>>>> 89579a1e856754591d28ef48fe1fd6e9488bd9c8
             </state>
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
       <file leaf-file-name="routes.yaml" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/config/routes.yaml">
           <provider selected="true" editor-type-id="text-editor">
@@ -158,10 +177,34 @@
 >>>>>>> ad30270e18782409cb51fc43a037c78d3e341b91
 =======
       <file pinned="false" current-in-tab="true">
+=======
+      <file pinned="false" current-in-tab="false">
+>>>>>>> 89579a1e856754591d28ef48fe1fd6e9488bd9c8
         <entry file="file://$PROJECT_DIR$/.env">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="252">
-              <caret line="24" column="38" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="38" />
+            <state relative-caret-position="-42">
+              <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/Kernel.php">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="29" column="30" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="32" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/templates/posts/index.html.twig">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="453">
+              <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+              <folding>
+                <element signature="e#12#26#0#Twig" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -181,6 +224,7 @@
       <find>4.3</find>
       <find>version</find>
       <find>db</find>
+      <find>dev</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -204,6 +248,7 @@
         <option value="$PROJECT_DIR$/templates/pages/index.html.twig" />
         <option value="$PROJECT_DIR$/config/routes.yaml" />
         <option value="$PROJECT_DIR$/src/Controller/frontController.php" />
+        <option value="$PROJECT_DIR$/templates/posts/index.html.twig" />
         <option value="$PROJECT_DIR$/src/Controller/PostsController.php" />
       </list>
     </option>
@@ -226,11 +271,19 @@
       </list>
     </option>
   </component>
+<<<<<<< HEAD
   <component name="ProjectFrameBounds">
     <option name="x" value="-8" />
     <option name="y" value="-8" />
     <option name="width" value="1382" />
     <option name="height" value="754" />
+=======
+  <component name="ProjectFrameBounds" extendedState="7">
+    <option name="x" value="664" />
+    <option name="y" value="3" />
+    <option name="width" value="702" />
+    <option name="height" value="730" />
+>>>>>>> 89579a1e856754591d28ef48fe1fd6e9488bd9c8
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true">
     <OptionsSetting value="true" id="Add" />
@@ -284,6 +337,28 @@
             <path>
               <item name="symfony" type="b2602c69:ProjectViewProjectNode" />
               <item name="symfony" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symfony" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symfony" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symfony" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symfony" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Controller" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symfony" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symfony" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="symfony" type="b2602c69:ProjectViewProjectNode" />
+              <item name="symfony" type="462c0819:PsiDirectoryNode" />
+              <item name="templates" type="462c0819:PsiDirectoryNode" />
+              <item name="posts" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="symfony" type="b2602c69:ProjectViewProjectNode" />
@@ -432,6 +507,7 @@
       <workItem from="1572698557103" duration="7929000" />
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1572764371201" duration="7371000" />
       <workItem from="1572775857304" duration="1207000" />
 =======
@@ -440,10 +516,14 @@
 =======
       <workItem from="1572764371201" duration="9297000" />
 >>>>>>> 1fdd7782d5ed3d0d97c067e363927780494625a4
+=======
+      <workItem from="1572764371201" duration="12839000" />
+>>>>>>> 89579a1e856754591d28ef48fe1fd6e9488bd9c8
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
+<<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
     <option name="totallyTimeSpent" value="24880000" />
@@ -453,6 +533,9 @@
 =======
     <option name="totallyTimeSpent" value="25599000" />
 >>>>>>> 1fdd7782d5ed3d0d97c067e363927780494625a4
+=======
+    <option name="totallyTimeSpent" value="29141000" />
+>>>>>>> 89579a1e856754591d28ef48fe1fd6e9488bd9c8
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -660,6 +743,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/src/Kernel.php">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.30769232">
@@ -686,6 +770,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/templates/posts/index.html.twig">
+=======
+    <entry file="file://$PROJECT_DIR$/src/Form/PostsType.php">
+>>>>>>> 89579a1e856754591d28ef48fe1fd6e9488bd9c8
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="-0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
@@ -696,6 +783,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
 <<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
@@ -721,6 +809,8 @@
         </state>
       </provider>
     </entry>
+=======
+>>>>>>> 89579a1e856754591d28ef48fe1fd6e9488bd9c8
     <entry file="file://$PROJECT_DIR$/config/bootstrap.php">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -744,17 +834,34 @@
     <entry file="file://$PROJECT_DIR$/config/packages/framework.yaml">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/Controller/PostsController.php">
+    <entry file="file://$PROJECT_DIR$/templates/posts/index.html.twig">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        <state relative-caret-position="453">
+          <caret line="31" column="11" selection-start-line="31" selection-start-column="11" selection-end-line="31" selection-end-column="11" />
+          <folding>
+            <element signature="e#12#26#0#Twig" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="252">
-          <caret line="24" column="38" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="38" />
+        <state relative-caret-position="-42">
+          <caret line="16" column="11" lean-forward="true" selection-start-line="16" selection-start-column="11" selection-end-line="16" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Kernel.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="29" column="30" selection-start-line="29" selection-start-column="16" selection-end-line="29" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/Controller/PostsController.php">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="336">
+          <caret line="16" column="35" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
         </state>
       </provider>
     </entry>

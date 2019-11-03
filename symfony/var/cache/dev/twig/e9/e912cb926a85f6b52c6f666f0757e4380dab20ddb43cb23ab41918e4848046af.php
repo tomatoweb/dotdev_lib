@@ -107,6 +107,69 @@ class __TwigTemplate_8944adb5302390cf41bf59717cec0c6e67b87e1ba2e7dea39b525450f71
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\CodeExtension']->getFileLink("C:/Users/jean/Desktop/dotdev_lib/symfony/templates/posts/index.html.twig", 0), "html", null, true);
         echo "\">templates/posts/index.html.twig</a></code></li>
     </ul>
+
+    ";
+        // line 20
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["env"]) || array_key_exists("env", $context) ? $context["env"] : (function () { throw new RuntimeError('Variable "env" does not exist.', 20, $this->source); })()));
+        foreach ($context['_seq'] as $context["key"] => $context["val"]) {
+            echo " ";
+            // line 21
+            echo "        ";
+            echo twig_escape_filter($this->env, $context["key"], "html", null, true);
+            echo " -> ";
+            echo twig_escape_filter($this->env, $context["val"], "html", null, true);
+            echo " <br>
+    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['key'], $context['val'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 23
+        echo "
+
+    <p>Username: ";
+        // line 25
+        (((twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["app"] ?? null), "user", [], "any", false, true, false, 25), "username", [], "any", true, true, false, 25) &&  !(null === twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["app"] ?? null), "user", [], "any", false, true, false, 25), "username", [], "any", false, false, false, 25)))) ? (print (twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, ($context["app"] ?? null), "user", [], "any", false, true, false, 25), "username", [], "any", false, false, false, 25), "html", null, true))) : (print ("Anonymous user")));
+        echo "</p>
+    ";
+        // line 26
+        if (twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 26, $this->source); })()), "debug", [], "any", false, false, false, 26)) {
+            // line 27
+            echo "        <p>Request method:              ";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 27, $this->source); })()), "request", [], "any", false, false, false, 27), "method", [], "any", false, false, false, 27), "html", null, true);
+            echo "    </p>
+        <p>Application Environment:     ";
+            // line 28
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 28, $this->source); })()), "environment", [], "any", false, false, false, 28), "html", null, true);
+            echo "       </p>
+    ";
+        }
+        // line 30
+        echo "
+
+    ";
+        // line 32
+        $context['_parent'] = $context;
+        $context['_seq'] = twig_ensure_traversable((isset($context["app"]) || array_key_exists("app", $context) ? $context["app"] : (function () { throw new RuntimeError('Variable "app" does not exist.', 32, $this->source); })()));
+        foreach ($context['_seq'] as $context["_key"] => $context["val"]) {
+            echo " ";
+            // line 33
+            echo "        ";
+            echo twig_escape_filter($this->env, (isset($context["key"]) || array_key_exists("key", $context) ? $context["key"] : (function () { throw new RuntimeError('Variable "key" does not exist.', 33, $this->source); })()), "html", null, true);
+            echo " -> ";
+            echo twig_escape_filter($this->env, $context["val"], "html", null, true);
+            echo " <br>
+    ";
+        }
+        $_parent = $context['_parent'];
+        unset($context['_seq'], $context['_iterated'], $context['_key'], $context['val'], $context['_parent'], $context['loop']);
+        $context = array_intersect_key($context, $_parent) + $_parent;
+        // line 35
+        echo "
+
+
+
 </div>
 ";
         
@@ -129,7 +192,7 @@ class __TwigTemplate_8944adb5302390cf41bf59717cec0c6e67b87e1ba2e7dea39b525450f71
 
     public function getDebugInfo()
     {
-        return array (  107 => 17,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
+        return array (  169 => 35,  158 => 33,  153 => 32,  149 => 30,  144 => 28,  139 => 27,  137 => 26,  133 => 25,  129 => 23,  118 => 21,  113 => 20,  107 => 17,  103 => 16,  96 => 12,  88 => 6,  78 => 5,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -152,6 +215,26 @@ class __TwigTemplate_8944adb5302390cf41bf59717cec0c6e67b87e1ba2e7dea39b525450f71
         <li>Your controller at <code><a href=\"{{ 'C:/Users/jean/Desktop/dotdev_lib/symfony/src/Controller/PostsController.php'|file_link(0) }}\">src/Controller/PostsController.php</a></code></li>
         <li>Your template at <code><a href=\"{{ 'C:/Users/jean/Desktop/dotdev_lib/symfony/templates/posts/index.html.twig'|file_link(0) }}\">templates/posts/index.html.twig</a></code></li>
     </ul>
+
+    {% for key,val in env %} {# from controller #}
+        {{ key }} -> {{ val }} <br>
+    {% endfor %}
+
+
+    <p>Username: {{ app.user.username ?? 'Anonymous user' }}</p>
+    {% if app.debug %}
+        <p>Request method:              {{ app.request.method }}    </p>
+        <p>Application Environment:     {{ app.environment }}       </p>
+    {% endif %}
+
+
+    {% for val in app %} {# from controller #}
+        {{ key }} -> {{ val }} <br>
+    {% endfor %}
+
+
+
+
 </div>
 {% endblock %}
 ", "posts/index.html.twig", "C:\\Users\\jean\\Desktop\\dotdev_lib\\symfony\\templates\\posts\\index.html.twig");
