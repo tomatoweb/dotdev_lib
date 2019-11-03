@@ -1,0 +1,23 @@
+
+bin/console debug:container			très utile pour débuger l'app
+
+bin/console debug:container maker 	maker sert à générer du code (bin/console make:controller Article, bin/console make:entity Article)
+
+symfony cli setup.exe		à installer dans le répertoire de symfony pour utiliser la commande 'symfony' (par exemple: 'symfony -V')
+				utile: taper la commande 'symfony' toute seule pour la documentation du cli symfony
+				'symfony.exe help' pour voir toutes les commandes
+				'symfony.exe help {commande}' pour voir l'aide sur la commande
+				'symfony server:status' (need installed WebServerBundle)
+				'symfony serve'  pour lancer le serveur  (Symfony provides a web server built on top of the PHP server (php -S 128.0.0.1:8000 -t public) to simplify your local setup. This server is distributed as a bundle, so you must first install and enable the server bundle.)
+				'symfony serve -d'  pour lancer le serveur en daemon (background, pouvoir continuer à utiliser la console)
+				'symfony help serve'  voir les options du server
+
+Attention:
+			symfony -V ou symfony -v 		donne la version du cli symfony.exe (pas le framework)
+			bin/console --version			donne la version du framework (ainsi que l'environnement [dev ou prod], le mode debug ou pas)
+				
+
+
+bin/console config:dump-reference 	Afficher tous les bundles installés
+
+php app/console assets:install --symlink  synchronise Symfony\src\Acme\ParadigmBundle\Resources\public AND Symfony\web\bundles\paradigm
