@@ -11,8 +11,11 @@
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
 =======
       <change beforePath="$PROJECT_DIR$/../.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/../.gitignore" afterDir="false" />
+<<<<<<< HEAD
       <change beforePath="$PROJECT_DIR$/commandes utiles.txt" beforeDir="false" afterPath="$PROJECT_DIR$/commandes utiles.txt" afterDir="false" />
 >>>>>>> ad30270e18782409cb51fc43a037c78d3e341b91
+=======
+>>>>>>> 1fdd7782d5ed3d0d97c067e363927780494625a4
     </list>
     <ignored path=".idea/dataSources.local.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -38,6 +41,7 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+<<<<<<< HEAD
 <<<<<<< HEAD
       <file leaf-file-name="base.html.twig" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/templates/base.html.twig">
@@ -115,6 +119,9 @@
             <state vertical-scroll-proportion="0.0">
 =======
       <file pinned="false" current-in-tab="true">
+=======
+      <file pinned="false" current-in-tab="false">
+>>>>>>> 1fdd7782d5ed3d0d97c067e363927780494625a4
         <entry file="file://$PROJECT_DIR$/src/Controller/PostsController.php">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="378">
@@ -146,8 +153,20 @@
           </provider>
         </entry>
       </file>
+<<<<<<< HEAD
 =======
 >>>>>>> ad30270e18782409cb51fc43a037c78d3e341b91
+=======
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/.env">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="24" column="38" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="38" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+>>>>>>> 1fdd7782d5ed3d0d97c067e363927780494625a4
     </leaf>
   </component>
   <component name="FileTemplateManagerImpl">
@@ -161,6 +180,7 @@
     <findStrings>
       <find>4.3</find>
       <find>version</find>
+      <find>db</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -264,17 +284,6 @@
             <path>
               <item name="symfony" type="b2602c69:ProjectViewProjectNode" />
               <item name="symfony" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="symfony" type="b2602c69:ProjectViewProjectNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="symfony" type="b2602c69:ProjectViewProjectNode" />
-              <item name="symfony" type="462c0819:PsiDirectoryNode" />
-              <item name="src" type="462c0819:PsiDirectoryNode" />
-              <item name="Controller" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="symfony" type="b2602c69:ProjectViewProjectNode" />
@@ -422,20 +431,28 @@
       <workItem from="1572691945944" duration="6358000" />
       <workItem from="1572698557103" duration="7929000" />
 <<<<<<< HEAD
+<<<<<<< HEAD
       <workItem from="1572764371201" duration="7371000" />
       <workItem from="1572775857304" duration="1207000" />
 =======
       <workItem from="1572764371201" duration="8628000" />
 >>>>>>> ad30270e18782409cb51fc43a037c78d3e341b91
+=======
+      <workItem from="1572764371201" duration="9297000" />
+>>>>>>> 1fdd7782d5ed3d0d97c067e363927780494625a4
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
 <<<<<<< HEAD
+<<<<<<< HEAD
     <option name="totallyTimeSpent" value="24880000" />
 =======
     <option name="totallyTimeSpent" value="24930000" />
 >>>>>>> ad30270e18782409cb51fc43a037c78d3e341b91
+=======
+    <option name="totallyTimeSpent" value="25599000" />
+>>>>>>> 1fdd7782d5ed3d0d97c067e363927780494625a4
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
@@ -679,6 +696,7 @@
         </state>
       </provider>
     </entry>
+<<<<<<< HEAD
     <entry file="file://$PROJECT_DIR$/.env">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-19">
@@ -688,6 +706,9 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/Form/PostsType.php">
+=======
+    <entry file="file://$PROJECT_DIR$/src/Kernel.php">
+>>>>>>> 1fdd7782d5ed3d0d97c067e363927780494625a4
       <provider selected="true" editor-type-id="text-editor">
 <<<<<<< HEAD
         <state vertical-scroll-proportion="0.17264958">
@@ -727,6 +748,13 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="378">
           <caret line="18" column="11" selection-start-line="18" selection-start-column="11" selection-end-line="18" selection-end-column="11" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/.env">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="24" column="38" selection-start-line="24" selection-start-column="32" selection-end-line="24" selection-end-column="38" />
         </state>
       </provider>
     </entry>
