@@ -229,3 +229,5 @@
 [2019-11-03 11:04:06] php.DEBUG: Warning: filemtime(): stat failed for C:\Users\jean\Desktop\dotdev_lib\symfony\config\routes\dev\twig.yaml [] []
 [2019-11-03 11:17:29] request.INFO: Matched route "home". {"route":"home","route_parameters":{"_route":"home","_controller":"App\\Controller\\frontController::index"},"request_uri":"http://dotdev/symfony/public/","method":"GET"} []
 [2019-11-03 11:17:29] security.INFO: Populated the TokenStorage with an anonymous Token. [] []
+[2019-11-03 12:39:45] request.INFO: Matched route "home". {"route":"home","route_parameters":{"_route":"home","_controller":"App\\Controller\\frontController::index"},"request_uri":"http://dotdev/symfony/public/","method":"GET"} []
+[2019-11-03 12:39:45] security.INFO: Populated the TokenStorage with an anonymous Token. [] []

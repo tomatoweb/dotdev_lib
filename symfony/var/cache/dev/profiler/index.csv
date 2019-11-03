@@ -73,3 +73,4 @@ a28e8c,::1,GET,http://localhost:8000/posts,1572772853,,500
 9455e3,::1,GET,http://localhost:8000/posts,1572772915,,200
 d2a851,::1,GET,http://localhost:8000/posts,1572773725,,200
 0d1167,127.0.0.1,GET,http://dotdev/symfony/public/,1572779849,,200
+713d0c,127.0.0.1,GET,http://dotdev/symfony/public/,1572784785,,200
