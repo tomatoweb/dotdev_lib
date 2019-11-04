@@ -17,4 +17,8 @@
 
 ###> symfony/web-server-bundle ###
 symfony/.web-server-pid
+<<<<<<< HEAD
 ###< symfony/web-server-bundle ###
+=======
+###< symfony/web-server-bundle ###
+>>>>>>> 389a5b754c1d26a46da54a10fa93f18eda1881d7

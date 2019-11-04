@@ -72,6 +72,10 @@ fa7e54,::1,GET,http://localhost:8000/posts,1572772853,a28e8c,200
 a28e8c,::1,GET,http://localhost:8000/posts,1572772853,,500
 9455e3,::1,GET,http://localhost:8000/posts,1572772915,,200
 d2a851,::1,GET,http://localhost:8000/posts,1572773725,,200
+<<<<<<< HEAD
+0d1167,127.0.0.1,GET,http://dotdev/symfony/public/,1572779849,,200
+713d0c,127.0.0.1,GET,http://dotdev/symfony/public/,1572784785,,200
+=======
 f50390,::1,GET,http://localhost:8000/posts,1572781766,fcc3de,200
 fcc3de,::1,GET,http://localhost:8000/posts,1572781766,,500
 6e8aba,::1,GET,http://localhost:8000/posts,1572781830,4b5a98,200
@@ -105,3 +109,4 @@ d1c09e,::1,GET,http://localhost:8000/posts,1572783595,,200
 24922c,::1,GET,http://localhost:8000/posts,1572784061,,200
 719f3f,::1,GET,http://localhost:8000/posts,1572784080,,200
 0f8dfd,::1,GET,http://localhost:8000/posts,1572784755,,200
+>>>>>>> 89579a1e856754591d28ef48fe1fd6e9488bd9c8
