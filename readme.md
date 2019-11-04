@@ -1,1 +1,1 @@
-PHP framework, AngularJS and Symfony 4 applications
+PHP framework, AngularJS and Symfony 5 applications
