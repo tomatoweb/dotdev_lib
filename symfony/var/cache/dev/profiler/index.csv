@@ -115,3 +115,5 @@ d1c09e,::1,GET,http://localhost:8000/posts,1572783595,,200
 ec999b,::1,GET,http://localhost:8001/favicon.ico,1572876647,5c602e,200
 5c602e,::1,GET,http://localhost:8001/favicon.ico,1572876647,,404
 7220e7,::1,GET,http://localhost:8001/posts,1572876655,,200
+558c56,127.0.0.1,GET,http://127.0.0.1:8000/,1572877680,,200
+7ccb7f,127.0.0.1,GET,http://127.0.0.1:8000/posts,1572877689,,200
