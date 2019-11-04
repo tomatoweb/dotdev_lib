@@ -110,3 +110,8 @@ d1c09e,::1,GET,http://localhost:8000/posts,1572783595,,200
 719f3f,::1,GET,http://localhost:8000/posts,1572784080,,200
 0f8dfd,::1,GET,http://localhost:8000/posts,1572784755,,200
 >>>>>>> 89579a1e856754591d28ef48fe1fd6e9488bd9c8
+0fd060,::1,GET,http://localhost:8001/,1572876645,,200
+28846e,::1,GET,http://localhost:8001/,1572876646,,200
+ec999b,::1,GET,http://localhost:8001/favicon.ico,1572876647,5c602e,200
+5c602e,::1,GET,http://localhost:8001/favicon.ico,1572876647,,404
+7220e7,::1,GET,http://localhost:8001/posts,1572876655,,200
