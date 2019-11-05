@@ -2,10 +2,14 @@
 
 namespace App\Controller;
 
+use App\Entity\Categories;
 use App\Entity\Works;
+use App\Form\WorksType;
+use App\Repository\WorksRepository;
 use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
+use Symfony\Component\Form\FormFactoryInterface;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
@@ -27,16 +31,41 @@ class  PostsController
     /**
      * @Route("/posts", name="posts")
      */
-    public function index(Environment $twig, RegistryInterface $doctrine)
-    {
-        //echo (__DIR__); die;
+    public function index(Environment $twig, RegistryInterface $doctrine)      {
+
 
         $works = $doctrine->getRepository(Works::class)->findAll();
+
+        $categories = $doctrine->getRepository(Categories::class)->findAll();
 
         return new Response($twig->render('posts/index.html.twig', [
             'controller_name' => 'PostsController',
             'env'             => $_ENV,
-            'works'           => $works
+            'works'           => $works,
+            'categories'      => $categories
+        ]));
+    }
+
+
+    // Same method but with WorksRepository dependency injection
+
+    /**
+     * @Route("/postsonly", name="postsonly")
+     */
+    public function indexonly(Environment $twig, WorksRepository $doctrine, FormFactoryInterface $formFactory)      {
+
+
+        $works = $doctrine->findAll();
+
+
+        // bin/console make:form Works
+        $form = $formFactory->createBuilder(WorksType::class, $works[0])->getForm();
+
+        return new Response($twig->render('posts/indexonly.html.twig', [
+            'controller_name' => 'PostsController',
+            'env'             => $_ENV,
+            'works'           => $works,
+            'form'            => $form->createView()
         ]));
     }
 

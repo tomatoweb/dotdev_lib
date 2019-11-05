@@ -38,9 +38,9 @@
         {{ work.name }} &nbsp; {{ work.slug }}<br>
     {% endfor %}
 
-    {% for cat in categories %}
-        {{ cat.name }} &nbsp; {{ cat.slug }}<br>
-    {% endfor %}
+    {{ form_start(form) }}
+    {{ form_widget(form) }}
+    {{ form_end(form) }}
 
 </div>
 {% endblock %}
