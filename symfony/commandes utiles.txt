@@ -13,7 +13,11 @@ Attention:
 				bin/console --version			donne la version du framework (ainsi que l'environnement [dev ou prod], le mode debug ou pas)
 
 
-bin/console 	debug:container					très utile pour débuger l'app
+bin/console 	debug:container					What services are registered with the container
+
+bin/console 	debug:autowiring				voir les classes/interfaces autowirées
+
+bin/console 	debug:container	{mot-clé}	    même chose avec mot-clé
 
 bin/console 	debug:container maker 			maker sert à générer du code (bin/console make:controller Article, bin/console make:entity Article)
 
@@ -32,3 +36,15 @@ bin/console		doctrine:migrations:diff 						c'est la même que la précédente mais
 				migrations:execute --up 20191104153855			pour tester (src/Migrations/Version20191104153855.php)
 
 				migrations:execute --down 20191104153855		pour annuler (src/Migrations/Version20191104153855.php)
+
+
+Donc pour créer des entités et leurs tables:
+
+    0. check .env and /config/packages/doctrine.yaml files
+    1. make:entity
+    2. doctrine:migrations:diff
+    3. check file src/Migrations/Version20191005556699
+    4. doctrine:migrations:migrate
+
+
+    

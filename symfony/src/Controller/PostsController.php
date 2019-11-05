@@ -2,23 +2,41 @@
 
 namespace App\Controller;
 
+use App\Entity\Works;
+use Symfony\Bridge\Doctrine\RegistryInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
-class PostsController
+// Si on extends AbstractController ou Controller
+// et qu'on va à sa définition puis dans la définition de ControllerTrait (la ligne use ControllerTrait)
+// on verra dans la méthode getDoctrine l'appel au service doctrine:
+// $this->container->get('doctrine')
+
+//class PostsController  extends  Controller     (obsolete, use AbstractController)
+//class PostsController  extends  AbstractController
+
+// sans extends, on injecte les dépendances (twig et doctrine) dans la méthode qui en a besoin
+// voir avec bin/console debug:autowiring doctrine:
+// il autowire  Symfony\Bridge\Doctrine\RegistryInterface
+
+class  PostsController
 {
     /**
      * @Route("/posts", name="posts")
      */
-    public function index(Environment $twig)
+    public function index(Environment $twig, RegistryInterface $doctrine)
     {
         //echo (__DIR__); die;
 
+        $works = $doctrine->getRepository(Works::class)->findAll();
+
         return new Response($twig->render('posts/index.html.twig', [
             'controller_name' => 'PostsController',
-            'env'             => $_ENV
+            'env'             => $_ENV,
+            'works'           => $works
         ]));
     }
 
