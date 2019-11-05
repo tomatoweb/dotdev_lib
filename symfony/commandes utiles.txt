@@ -22,3 +22,13 @@ bin/console 	config:dump-reference 			Afficher tous les bundles installés
 bin/console 	assets:install --symlink  		synchronise Symfony\src\Acme\ParadigmBundle\Resources\public AND Symfony\web\bundles\paradigm
 
 bin/console 	clear:cache
+
+bin/console		make:entity {entity name}
+
+bin/console		make:migration
+
+bin/console		doctrine:migrations:diff 						c'est la même que la précédente mais sans le plugin 'make'
+
+				migrations:execute --up 20191104153855			pour tester (src/Migrations/Version20191104153855.php)
+
+				migrations:execute --down 20191104153855		pour annuler (src/Migrations/Version20191104153855.php)

@@ -117,3 +117,8 @@ ec999b,::1,GET,http://localhost:8001/favicon.ico,1572876647,5c602e,200
 7220e7,::1,GET,http://localhost:8001/posts,1572876655,,200
 558c56,127.0.0.1,GET,http://127.0.0.1:8000/,1572877680,,200
 7ccb7f,127.0.0.1,GET,http://127.0.0.1:8000/posts,1572877689,,200
+27bd28,127.0.0.1,GET,http://127.0.0.1:8000/posts,1572881337,,200
+07a352,::1,GET,http://localhost:8000/,1572939531,,200
+d4bb45,::1,GET,http://localhost:8000/favicon.ico,1572939535,309fd0,200
+309fd0,::1,GET,http://localhost:8000/favicon.ico,1572939535,,404
+e5072e,::1,GET,http://localhost:8000/posts,1572939540,,200
