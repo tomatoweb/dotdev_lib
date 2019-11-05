@@ -22,7 +22,7 @@ class frontController
      */
     public function index (Environment $twig) {
 
-        $var1 = NULL;
+        $var = NULL;
 
         var_dump($var);
 
