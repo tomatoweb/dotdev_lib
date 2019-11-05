@@ -22,6 +22,10 @@ class frontController
      */
     public function index (Environment $twig) {
 
+        $var1 = NULL;
+
+        var_dump($var);
+
         return new Response($twig->render('pages/index.html.twig'));
     }
 }
