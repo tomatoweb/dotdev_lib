@@ -9,23 +9,27 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
 
+
 class frontController
 {
 
     /**
      * @Route("/", name="home")
-     * @param Environment $twig
-     * @return Response
-     * @throws \Twig\Error\LoaderError
-     * @throws \Twig\Error\RuntimeError
-     * @throws \Twig\Error\SyntaxError
      */
-    public function index (Environment $twig) {
-
-        $var = NULL;
-
-        var_dump($var);
+    public function index (Environment $twig){
 
         return new Response($twig->render('pages/index.html.twig'));
+    }
+
+
+    /**
+     * @Route("/news/{slug}")
+     */
+    public function show ($slug){
+
+        return new Response(sprintf(
+            'Future page to show the article: %s',
+            $slug
+            ));
     }
 }

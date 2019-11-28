@@ -7,6 +7,7 @@
         "ext-iconv": "*",
         "api-platform/api-pack": "^1.2",
         "sensio/framework-extra-bundle": "^5.1",
+        "sensiolabs/security-checker": "^6.0",
         "symfony/asset": "4.3.*",
         "symfony/console": "4.3.*",
         "symfony/dotenv": "4.3.*",
@@ -30,7 +31,8 @@
         "symfony/yaml": "4.3.*"
     },
     "require-dev": {
-        "symfony/debug-pack": "*",
+        "dama/doctrine-test-bundle": "^6.2",
+        "symfony/debug-pack": "^1.0",
         "symfony/maker-bundle": "^1.0",
         "symfony/phpunit-bridge": "^4.3",
         "symfony/profiler-pack": "*",
@@ -64,10 +66,12 @@
     "scripts": {
         "auto-scripts": {
             "cache:clear": "symfony-cmd",
-            "assets:install %PUBLIC_DIR%": "symfony-cmd"
+            "assets:install %PUBLIC_DIR%": "symfony-cmd",
+            "security-checker security:check": "script"
         },
         "post-install-cmd": [
-            "@auto-scripts"
+            "@auto-scripts",
+            "Sensio\\Bundle\\DistributionBundle\\Composer\\ScriptHandler::buildBootstrap"
         ],
         "post-update-cmd": [
             "@auto-scripts"

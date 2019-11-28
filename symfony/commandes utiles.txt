@@ -12,6 +12,25 @@ Attention:
 				symfony -V ou symfony -v 		donne la version du cli symfony.exe (pas le framework)
 				bin/console --version			donne la version du framework (ainsi que l'environnement [dev ou prod], le mode debug ou pas)
 
+composer self-update		update la version de composer
+
+composer require debug --dev                    installe tous les outils de debug
+                                                voir symfony.sh -> taper debug
+                                                -> symfony/debug-pack -> vers son github
+                                                -> composer.json
+                                                on voit les pack installés:
+                                                symfony/debug-bundle
+                                                symfony/monolog-bundle
+                                                easycorp/easy-log-handler
+                                                symfony/profiler-pack
+                                                symfony/var-dumper ( écrire {{ dump() }} dans le twig
+
+./bin/phpunit tests/MathTest.php                test la classe MathTest.php
+./vendor/bin/simple-phpunit                     procède les phpunit tests
+
+./bin/phpunit --version                         
+
+bin/conlole list        liste toutes les commandes disponibles
 
 bin/console 	debug:container					What services are registered with the container
 

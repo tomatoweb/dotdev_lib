@@ -1,6 +1,6 @@
 <?
 /* Default Configuration */
-$cfg['blowfish_secret']			= '4ddf7f757b5326.55538321';
+$cfg['blowfish_secret']			= '';
 $cfg['AllowThirdPartyFraming']	= true;
 $cfg['DefaultLang']				= 'de';
 $cfg['ServerDefault']			= 1;
@@ -52,7 +52,7 @@ $cfg['Servers'][1] = [
 	//'AllowNoPasswordRoot' => true,
 	'AllowRoot' 	=> true,
 	'user' 			=> 'root',
-	'password' 		=> 'root',
-	'controluser' 	=> 'app',
-	'controlpass' 	=> 'app',
+	'password' 		=> '',
+	'controluser' 	=> '',
+	'controlpass' 	=> '',
 	] + $default_server_cfg;

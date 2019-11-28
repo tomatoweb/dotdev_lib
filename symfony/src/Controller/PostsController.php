@@ -6,13 +6,10 @@ use App\Entity\Categories;
 use App\Entity\Works;
 use App\Form\WorksType;
 use App\Repository\WorksRepository;
-use Symfony\Bridge\Doctrine\RegistryInterface;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
-use Symfony\Bundle\FrameworkBundle\Controller\Controller;
-use Symfony\Component\Form\FormFactoryInterface;
-use Symfony\Component\HttpFoundation\Response;
-use Symfony\Component\Routing\Annotation\Route;
 use Twig\Environment;
+use Symfony\Bridge\Doctrine\RegistryInterface;
+use Symfony\Component\Form\FormFactoryInterface;
+use Symfony\Component\Routing\Annotation\Route;
 
 // Si on extends AbstractController ou Controller
 // et qu'on va à sa définition puis dans la définition de ControllerTrait (la ligne use ControllerTrait)
@@ -35,6 +32,8 @@ class  PostsController
 
 
         $works = $doctrine->getRepository(Works::class)->findAll();
+
+        //$works = $this->getDoctrine()->getManager();
 
         $categories = $doctrine->getRepository(Categories::class)->findAll();
 
