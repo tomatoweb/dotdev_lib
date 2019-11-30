@@ -8,7 +8,7 @@
 /symfony/public/bundles/
 /symfony/var/cache/*
 symfony/var/cache/*
-/symfony/vendor/
+#/symfony/vendor/
 ###< symfony/framework-bundle ###
 
 ###> symfony/phpunit-bridge ###

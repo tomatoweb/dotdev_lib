@@ -1,3 +1,4 @@
+# ici on est dans symfony/.gitignore
 ###> symfony/framework-bundle ###
 /.idea
 .idea/misc.xml
