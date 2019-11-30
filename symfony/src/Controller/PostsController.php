@@ -20,7 +20,8 @@ use Symfony\Component\Routing\Annotation\Route;
 //class PostsController  extends  AbstractController
 
 // sans extends, on injecte les dépendances (twig et doctrine) dans la méthode qui en a besoin
-// voir avec bin/console debug:autowiring doctrine:
+// ou bien dans le __construct si on a besoin d'injecter dans plusieurs méthodes
+// voir avec bin/console debug:autowiring doctrine
 // il autowire  Symfony\Bridge\Doctrine\RegistryInterface
 
 class  PostsController
