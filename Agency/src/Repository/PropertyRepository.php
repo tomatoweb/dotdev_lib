@@ -25,7 +25,7 @@ class PropertyRepository extends ServiceEntityRepository
      */
     private function findAllCreatedQuery(): QueryBuilder{
         return $this->createQueryBuilder('p')
-            ->andWhere('p.created_at is not null');
+            ->andWhere('p.created is not null');
     }
 
     /**

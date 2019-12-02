@@ -37,4 +37,32 @@ class PropertyController extends AbstractController{
                 "menu_active" => "properties"
             ]);
     }
+
+    /**
+     * @Route("/show/{name}-{id}", name="property.show", requirements={"name":"^[a-z]+$",
+     * "id":"^[-+]?[1-9]\d*$"})
+     * @param $id
+     * @param Property $property
+     * @return Response
+     * @internal param PropertyRepository $repo
+     */
+    public function show(Property $property, $name) : Response{
+    //public function show($id, PropertyRepository $repo) : Response{ // alternative
+
+        //$property = $repo->find($id);
+
+        if($name !== $property->getName()){
+            return $this->redirectToRoute(
+                "property.show",
+                ["id" => $property->getId(), "name" => $property->getName()],
+                301
+            );
+        }
+
+        return $this->render('property/show.html.twig',
+        [
+            "menu_active"  => "properties",
+            "property"     => $property
+        ]);
+    }
 }

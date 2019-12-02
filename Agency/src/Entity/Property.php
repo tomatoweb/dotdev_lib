@@ -46,12 +46,17 @@ class Property
     /**
      * @ORM\Column(type="datetime")
      */
-    private $created_at;
+    private $created;
+
+    /**
+     * @ORM\Column(type="string", length=255, options={"not null"=false, "default"="100000"})
+     */
+    private $price;
 
 
     public function __construct(){
 
-        $this->created_at = new \DateTime();
+        $this->created = new \DateTime();
     }
 
 
@@ -128,14 +133,26 @@ class Property
         return $this;
     }
 
-    public function getCreated_at()
+    public function getCreated()
     {
-        return $this->created_at;
+        return $this->created->format('Y-m-d H:i:s');
     }
 
-    public function setCreatedAt(\DateTimeInterface $created_at): self
+    public function setCreated(\DateTimeInterface $created): self
     {
-        $this->created_at = $created_at;
+        $this->created = $created;
+
+        return $this;
+    }
+
+    public function getPrice(): ?string
+    {
+        return number_format($this->price, 0, '', ' ');
+    }
+
+    public function setPrice(string $price): self
+    {
+        $this->price = $price;
 
         return $this;
     }

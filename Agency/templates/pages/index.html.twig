@@ -22,7 +22,11 @@
                 <div class="card">
                     <div class="card-body">
                         <h5 class="card-title">
-                            <a href="">{{ property.name }}</a>
+                            <a href="{{ path('property.show', {id:property.id, name:property
+                                .name})
+                            }}">{{ property
+                                .name
+                                }}</a>
                         </h5>
                         <p class="card-text">
                             {{ property.description }}
@@ -37,7 +41,10 @@
                             {{ property.surface }} m
                         </div>
                         <div class="text-primary">
-                            {{ property.created_at|date('Y-m-d') }}
+                            {{ property.created }}
+                        </div>
+                        <div class="text-primary font-weight-bold h3">
+                            {{ property.price }}
                         </div>
                     </div>
                 </div>
