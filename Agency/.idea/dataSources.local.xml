@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="dataSourceStorageLocal">
+    <data-source name="MySQL - agence@localhost" uuid="6bab03ac-1318-4e35-8a94-572493e393f1">
+      <secret-storage>master_key</secret-storage>
+      <user-name>root</user-name>
+      <schema-pattern>agence.*</schema-pattern>
+      <default-schemas>agence.*</default-schemas>
+    </data-source>
+  </component>
+</project>
