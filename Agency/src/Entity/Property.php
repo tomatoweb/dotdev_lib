@@ -63,7 +63,7 @@ class Property
     /**
      *
      */
-    public function getBedrooms(): int
+    public function getBedrooms(): ?int
     {
         return $this->bedrooms;
     }
@@ -80,12 +80,12 @@ class Property
         return $this;
     }
 
-    public function getId(): int
+    public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getName(): string
+    public function getName(): ?string
     {
         return $this->name;
     }
@@ -97,7 +97,7 @@ class Property
         return $this;
     }
 
-    public function getDescription(): string
+    public function getDescription(): ?string
     {
         return $this->description;
     }
@@ -109,7 +109,7 @@ class Property
         return $this;
     }
 
-    public function getRooms(): int
+    public function getRooms(): ?int
     {
         return $this->rooms;
     }
@@ -121,7 +121,7 @@ class Property
         return $this;
     }
 
-    public function getSurface(): int
+    public function getSurface(): ?int
     {
         return $this->surface;
     }
@@ -133,7 +133,7 @@ class Property
         return $this;
     }
 
-    public function getCreated()
+    public function getCreated() : ?string
     {
         return $this->created->format('Y-m-d H:i:s');
     }
@@ -146,6 +146,12 @@ class Property
     }
 
     public function getPrice(): ?string
+    {
+        return $this->price;
+    }
+
+
+    public function getFormatPrice(): ?string
     {
         return number_format($this->price, 0, '', ' ');
     }

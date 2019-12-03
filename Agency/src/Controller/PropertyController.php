@@ -39,7 +39,7 @@ class PropertyController extends AbstractController{
     }
 
     /**
-     * @Route("/show/{name}-{id}", name="property.show", requirements={"name":"^[a-z]+$",
+     * @Route("/show/{name}-{id}", name="property.show", requirements={"name":"^[a-z_\-]+$",
      * "id":"^[-+]?[1-9]\d*$"})
      * @param $id
      * @param Property $property

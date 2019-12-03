@@ -17,16 +17,23 @@
             <tbody>
             {% for property in properties %}
                 <tr>
-                    <td>{{ property.name }}</td>
+                    <td><div class="d-inline">{{ property.name }}</div> <h4 class="
+                    text-primary">{{ property.getFormatPrice }}</h4></td>
                     <td class="">
-                        <a href="{{ path('admin.property.edit', {"id":property.id}) }}" class="btn
-                        btn-secondary">editer</a>
-                        <a href="" class="btn btn-danger">supprimer</a>
+                        <a href="{{ path('admin.property.edit', {"id":property.id}) }}" class="btn btn-secondary">editer</a>
+                        <form method="post" action="{{ path('admin.property.delete',{"id":property.id}) }}" class=" d-inline">
+                            <input type="hidden" name="_method" value="DELETE">
+                            <input type="hidden" name="_token" value="{{ csrf_token('delete'~property.id) }}">
+                            <button class="btn btn-danger">supprimer</button>
+                        </form>
                     </td>
                 </tr>
             {% endfor %}
             </tbody>
         </table>
+        <div class="text-right">
+            <button class="btn btn-primary">Nouveau</a>
+        </div>
     </div>
 
 {% endblock %}
