@@ -58,6 +58,8 @@ class AdminController extends AbstractController{
             $this->em->persist($property);
             $this->em->flush();
 
+            $this->addFlash('success', "update ok");
+
             return $this->redirectToRoute('admin.property.index');
         }
 
@@ -86,6 +88,8 @@ class AdminController extends AbstractController{
 
             $this->em->flush();
 
+            $this->addFlash('success', "update ok");
+
             return $this->redirectToRoute("admin.property.index");
         }
 
@@ -105,10 +109,13 @@ class AdminController extends AbstractController{
 
         $this->em->remove($property);
         $this->em->flush();
+
+        $this->addFlash('success', "update ok");
+        return $this->redirectToRoute('admin.property.index');
         }
 
 
 
-        return $this->redirectToRoute('admin.property.index');
+        return new Response('csrf error');
     }
 }

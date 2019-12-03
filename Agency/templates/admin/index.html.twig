@@ -5,6 +5,9 @@
     <h1 class="mt-4 text-center">
         Gerer les biens
     </h1>
+    {% for message in app.flashes('success') %}
+        <div class="alert alert-success text-center">{{ message }}</div>
+    {% endfor %}
     <div class="container mb-5">
 
         <table class="table table-striped">
@@ -21,7 +24,7 @@
                     text-primary">{{ property.getFormatPrice }}</h4></td>
                     <td class="">
                         <a href="{{ path('admin.property.edit', {"id":property.id}) }}" class="btn btn-secondary">editer</a>
-                        <form method="post" action="{{ path('admin.property.delete',{"id":property.id}) }}" class=" d-inline">
+                        <form method="post" action="{{ path('admin.property.delete',{"id":property.id}) }}" class=" d-inline" onsubmit="return confirm('are you sure')">
                             <input type="hidden" name="_method" value="DELETE">
                             <input type="hidden" name="_token" value="{{ csrf_token('delete'~property.id) }}">
                             <button class="btn btn-danger">supprimer</button>
