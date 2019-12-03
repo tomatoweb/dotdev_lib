@@ -3,13 +3,13 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\PropertyRepository")
  */
 class Property
 {
-
 
     /**
      * @ORM\Id()
@@ -30,6 +30,7 @@ class Property
 
     /**
      * @ORM\Column(type="smallint", options={"unsigned"=true, "not null"=true, "default"=1})
+     * @Assert\Range(min="1", max="10")
      */
     private $rooms;
 
