@@ -35,7 +35,10 @@ class AdminController extends AbstractController{
 
         $properties = $this->repo->findAll();
 
-        return $this->render('admin/index.html.twig', compact('properties'));
+        return $this->render('admin/index.html.twig', [
+            'properties' => $properties,
+            'menu_active' => 'admin'
+        ]);
     }
 
     // Attention: la route /admin/{id} va catcher toutes les routes qui commencent par /admin.
