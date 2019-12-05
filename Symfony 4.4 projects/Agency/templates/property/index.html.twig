@@ -1,0 +1,34 @@
+{% extends 'base.html.twig' %}
+{% block title 'Les Biens' %}
+{% block body %}
+<div class="container mt-4">
+    <h1 class="h1 text-center">Tous les Biens</h1>
+
+    <div class="row flex">
+        {% for prop in properties %}
+        <div class="col-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <a href="{{ path('property.show', {id:prop.id, name:prop.name}) }}" class="card-title text-primary">
+                        {{ prop.name }}
+                    </a>
+                    <div class="card-text">
+                        {{ prop.description }}
+                        <p>{{'Pièces: '| convert_encoding('UTF-8', 'ISO-8859-1') }}{{ prop.rooms  }}</p>
+                        <p>Chambres: {{ prop.bedrooms }}</p>
+                        <h4 class="text-primary">
+                            {{ prop.formatPrice }}
+                        </h4>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+
+</div>
+
+
+
+{% endblock %}
