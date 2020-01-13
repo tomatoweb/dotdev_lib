@@ -1,0 +1,41 @@
+# Do not remove the IfModule condition so that
+# if the rewrite module becomes unavailable for any reason, your site will not break.
+<IfModule mod_rewrite.c>
+
+  # This line tells the server to process all following lines beginning with Rewrite* up to the next RewriteEngine line
+  # as one logical group. You could set the engine to Off to not process any rules. 
+  # During testing, this is much easier than commenting out every rule.
+  RewriteEngine On
+
+  # !IMPORTANT! Set your RewriteBase here and don't forget trailing and leading slashes.
+  # If your page resides at http://www.example.com/mypage/test1
+  # then use RewriteBase /mypage/test1/
+  RewriteBase /
+
+  # RewriteCond means a condition must be true in order for the next RewriteRule to be processed.
+  # %{REQUEST_FILENAME} is a variable set by the server to contain the request URL, not just a filename as it may appear.
+  # The -f flag without the ! means the condition is true if the first argument resolves to a valid file.
+  # The ! negates the flag, so now with the full !-f the condition is true if the first argument does NOT resolve to a valid file.
+  # Since permalinks should not point to any valid system filename, a typical permalink will cause this condition to be true.
+  # A reference to a valid server file will cause this condition to be false.
+  # Donc codeigniter/license.txt ou codeigniter/test/testing.php fonctionnent.
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+
+  # Cette formule redirige chaque requête contenant la string letstest sur le script /test/testing.php, et [L] est égal à break (stop and exit treatment)
+  RewriteRule letstest /test/testing.php [L]
+
+  # Cette formule redirige chaque requête sur le script index.php/requête, et [L] est égal à break (stop and exit treatment)
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d  
+  RewriteRule ^(.*)$ index.php?/$1 [L]
+
+</IfModule>
+
+<IfModule !mod_rewrite.c>
+  # If we don't have mod_rewrite installed, all 404's
+  # can be sent to index.php, and everything works as normal.
+  # Submitted by: ElliotHaughin
+
+  ErrorDocument 404 /index.php
+</IfModule>
