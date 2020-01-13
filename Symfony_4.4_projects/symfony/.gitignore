@@ -13,7 +13,7 @@
 /.env.local.php
 /.env.*.local
 /public/bundles/
-var/cache/*
+var/
 /vendor/
 ###< symfony/framework-bundle ###
 
