@@ -1,0 +1,38 @@
+{% include 'ParadigmBundle:partials:cms_admin_header.html.twig' %}
+
+<!-- FLASH -->
+{% set flash = app.session.flashbag.get('flash') %}
+{% if flash.type is defined %}
+    <div class="alert alert-{{ flash.type }}">{{ flash.message|raw }}</div>
+{% endif %}
+
+<div class="container margin-top-3" style="min-height:687px; letter-spacing: 2px">
+    <h3>Catégories</h3>
+    <p><a href="{{ path('edit_category') }}" class="btn btn-success">Create a new Category</a></p>
+    <table class="table table-responsive">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Slug</th>
+            </tr>
+        </thead>
+        <tbody>
+    {% for category in categories %} {# <?php foreach ($categories as $category): ?> #}
+            <tr>
+                <td>{{ category.id }}</td>
+                <td>{{ category.name }}</td>
+                <td>{{ category.slug }}</td>
+                <td>
+                    <a href="{{ path('edit_category', {'id':category.id, 'csrf':app.session.get('token')} ) }}" class="btn btn-success">edit</a>
+
+                    <a href="{{ path('delete_category', {'id':category.id, 'csrf':app.session.get('token')} ) }}"
+                       class="btn btn-danger" onclick="return confirm('Are you sure?')">delete
+                    </a>
+                </td>
+            </tr>    
+    {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% include 'ParadigmBundle:partials:cms_admin_footer.html.twig' %}

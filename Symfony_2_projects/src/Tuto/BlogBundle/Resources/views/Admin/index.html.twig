@@ -1,0 +1,13 @@
+{{ dump(app.session.flashbag.all()) }}
+{% for type, flashMessages in app.session.flashbag.all() %}
+    {% for flashMessage in flashMessages %}
+        <div class="flash-{{ type }}">
+            {{ flashMessage }}
+            mmkh
+        </div>
+    {% endfor %}
+{% endfor %}
+
+Accueil Admin du blog - Articles<br/>
+<a href="{{path('blog_admin_ajouterArticle')}}" >Ajouter un article</a>
+ 

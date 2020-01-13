@@ -1,0 +1,25 @@
+tomatoweb_test:
+    resource: "@TomatowebTestBundle/Resources/config/routing.yml"
+    prefix:   /
+
+shop:
+    resource: "@ShopBundle/Controller"
+    prefix:   /shop
+    type: annotation
+
+acme_paradigm:
+    resource: "@ParadigmBundle/Controller"
+    prefix: /paradigm
+    type: annotation
+
+acme_hello:
+    resource: "@AcmeHelloBundle/Resources/config/routing.yml"
+    prefix:   /
+
+tuto_blog:
+    resource: "@TutoBlogBundle/Resources/config/routing.yml"
+    prefix:   /blog
+tuto_blog_admin:
+    resource: "@TutoBlogBundle/Resources/config/routing_admin.yml"
+    prefix:   /admin/blog
+

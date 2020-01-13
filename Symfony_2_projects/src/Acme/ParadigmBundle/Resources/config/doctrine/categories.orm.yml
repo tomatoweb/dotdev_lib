@@ -1,0 +1,17 @@
+Acme\ParadigmBundle\Entity\categories:
+    type: entity
+    table: null
+    id:
+        id:
+            type: integer
+            id: true
+            generator:
+                strategy: AUTO
+    fields:
+        name:
+            type: string
+            length: 255
+        slug:
+            type: string
+            length: 255
+    lifecycleCallbacks: {  }

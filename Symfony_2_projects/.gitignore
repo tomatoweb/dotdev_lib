@@ -1,0 +1,4 @@
+/nbproject/private/
+/vendor
+/app/cache
+/app/config/parameters.yml

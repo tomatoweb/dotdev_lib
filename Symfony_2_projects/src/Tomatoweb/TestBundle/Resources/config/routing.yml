@@ -1,0 +1,3 @@
+tomatoweb_test_homepage:
+    path:     /hellotest/{name}
+    defaults: { _controller: TomatowebTestBundle:Default:index }

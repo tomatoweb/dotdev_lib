@@ -1,0 +1,422 @@
+<!doctype html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>Shopping</title>
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
+        <link rel="stylesheet" href="/Symfony/web/bundles/shop/css/shop.css" type="text/css" />
+    <link rel="icon" href="/Symfony/web/bundles/shop/images/favicon.png">
+</head>    
+<body style="background-image : url(/Symfony/web/bundles/shop/images/bg-body.jpg);background-repeat: no-repeat;background-color: #ecf2f2;">
+
+  <nav class="navbar navbar-default" role="navigation" style="background-color: rgb(236, 242, 242);">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">        
+      <!-- END NAVBAR RESPONSIVE TOGGLE BUTTON - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -->
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      
+      <a href="/Symfony/web/shop/">
+        <img src="/Symfony/web/bundles/shop/images/shop5.png" alt="shop">
+        </a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling- - - - - - - - -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1" style="">
+      <ul class="nav navbar-nav">
+        <li class="active">
+            <!-- BEST-SELLER BUTTON - - - - -->
+            <form action="/Symfony/web/shop/" method="post">
+                <input type="hidden" name="product_name" value="The Wolf of Wall Street 2013">            
+                <input type="submit" value="Best-seller" id="best-seller-btn">
+            </form>
+        </li>        
+        
+        <!-- DROPDOWN DEPARTMENTS - - - - - - - - - - - - - - - - - - - - - - - - - -->
+        <li>
+          <a href="#" data-toggle="dropdown" id="navbar-btn-2lines">
+              <span>Shop by<br></span>
+              <span><b>Department</b></span>
+              <b class="caret"></b>
+          </a>
+          <ul class="dropdown-menu">
+                                            
+              <li><a href="/Symfony/web/shop/?department=1">Books &amp; Audible</a></li>
+                                              
+              <li><a href="/Symfony/web/shop/?department=2">Movies &amp; Games</a></li>
+                                              
+              <li><a href="/Symfony/web/shop/?department=3">Electronics &amp; Computers</a></li>
+                                              
+              <li><a href="/Symfony/web/shop/?department=4">Shoes &amp; Accessories</a></li>
+                                            <li class="divider"></li>
+              <li><a href="/Symfony/web/shop/">All departments</a>
+          </ul>
+        </li>
+      </ul>
+        
+      <!-- NAVBAR FORM - - - - - - - - - - - - - - - - - - - - - - - - - -->
+      <form  action="/Symfony/web/shop/" method="post" class="navbar-form" role="search" style="display:inline; border-top: none; border-bottom: none;">
+        <div class="form-group" style="display: inline;">
+          <input type="text"
+                 id="product" 
+                 name="product_name"                 
+                 class="form-control" 
+                 autocomplete="off"
+                 autofocus
+                 style="max-width:29%;margin-top:9px; display: inline" 
+                 placeholder="Search a product" >  
+          <button type="submit" 
+                  class="btn btn-default" 
+                  style="margin-top:9px;display:inline;" >
+                    Go
+          </button>
+        </div>
+      </form>
+      
+      <!-- DROPDOWN MENU - - - - - - - - - - - - - - - - - - - - - - - - - -->      
+        <ul class="nav navbar-nav navbar-right">
+        <li>
+            <a href="/Symfony/web/shop/?cart=view"  style="padding:0;position: absolute;margin-left: -75px;">
+                <span id="cart-number">
+                                    </span>
+                <img src="/Symfony/web/bundles/shop/images/cart.png" title="See my cart" style="margin-top: 3%;">
+            </a>
+        </li>
+        <li class="dropdown" style="border-left: 1px solid lightgray;">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <b class="caret"></b></a>
+          <ul class="dropdown-menu">            
+            <li><a href="/Symfony/web/paradigm/cms">The International Post</a></li>
+            <li><a href="/Symfony/web/shop/">The e-Shop</a></li>
+            <li class="divider"></li>
+            <li><a href="/Symfony/web/paradigm/">Mona Lisa Creations</a></li>
+          </ul>
+        </li>
+      </ul>      
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+<div id="txtHint"></div>
+<div class="container" >
+        
+    <div class="row">        
+            <div class="col-sm-3" >
+            <div class="shop-article">
+                <a href=""  data-toggle="modal" data-target="#myModal1">
+                    <img src="/Symfony/web/bundles/shop/images/small_1.jpg" class="" alt="" width="" style="max-width: 100%;" >
+                </a>
+                <p id="product_name">New Balance Men&#039;s MT810v3 Trail Running Shoe</p>
+                <p id="product_price"><b>$116</b></p>
+                            </div>
+            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">New Balance Men&#039;s MT810v3 Trail Running Shoe</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/Symfony/web/bundles/shop/images/1.jpg" alt="" height="320">
+                            <p>    Textile/Synthetic
+    Synthetic sole
+    4mm heel-to-toe drop
+    Durable nylon ripstop upper
+    REVlite midsole foram
+    Ndurance high-abrasion outsole
+    Weight: 9.8 oz (278g)
+    New Balance prepares feet for natural trail running with a </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left">Close</button>
+                            <a href="/Symfony/web/shop/order?product_id=1"><button type="button" class="add-to-cart-btn"></button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+                <div class="col-sm-3" >
+            <div class="shop-article">
+                <a href=""  data-toggle="modal" data-target="#myModal2">
+                    <img src="/Symfony/web/bundles/shop/images/small_2.png" class="" alt="" width="" style="max-width: 100%;" >
+                </a>
+                <p id="product_name">The Wolf of Wall Street 2013</p>
+                <p id="product_price"><b>$163</b></p>
+                            </div>
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">The Wolf of Wall Street 2013</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/Symfony/web/bundles/shop/images/2.png" alt="" height="320">
+                            <p>
+
+Sex. Money. Power. Drugs. Brace yourself for an outrageous true story from legendary filmmaker Martin Scorsese. Leonardo DiCaprio stars as a young stockbroker hungry for a life of non-stop thrills, where corruption was king and more was never enough.
+</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left">Close</button>
+                            <a href="/Symfony/web/shop/order?product_id=2"><button type="button" class="add-to-cart-btn"></button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+                <div class="col-sm-3" >
+            <div class="shop-article">
+                <a href=""  data-toggle="modal" data-target="#myModal3">
+                    <img src="/Symfony/web/bundles/shop/images/small_3.jpg" class="" alt="" width="" style="max-width: 100%;" >
+                </a>
+                <p id="product_name">The Road Paperback by Cormac McCarthy</p>
+                <p id="product_price"><b>$35</b></p>
+                            </div>
+            <div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">The Road Paperback by Cormac McCarthy</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/Symfony/web/bundles/shop/images/3.jpg" alt="" height="320">
+                            <p>NATIONAL BESTSELLER
+
+PULITZER PRIZE WINNER
+National Book Critic&#039;s Circle Award Finalist
+
+A New York Times Notable Book
+One of the Best Books of the Year
+The Boston Globe, The Christian Science Monitor, The Denver Post, The Kansas City Star, Los Ang</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left">Close</button>
+                            <a href="/Symfony/web/shop/order?product_id=3"><button type="button" class="add-to-cart-btn"></button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+                <div class="col-sm-3" >
+            <div class="shop-article">
+                <a href=""  data-toggle="modal" data-target="#myModal4">
+                    <img src="/Symfony/web/bundles/shop/images/small_4.jpg" class="" alt="" width="" style="max-width: 100%;" >
+                </a>
+                <p id="product_name">Canon PowerShot A2500 16MP Digital Camera</p>
+                <p id="product_price"><b>$36</b></p>
+                            </div>
+            <div class="modal fade" id="myModal4" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Canon PowerShot A2500 16MP Digital Camera</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/Symfony/web/bundles/shop/images/4.jpg" alt="" height="320">
+                            <p>    ECO Mode to reduce power consumption..
+    Capture impressive 720p HD video in stereo sound with a dedicated movie button..
+    16 megapixel, 1/2.3-inch CCD sensor and Canon DIGIC 4 image processor deliver enhanced image quality..
+    5x optical zo</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left">Close</button>
+                            <a href="/Symfony/web/shop/order?product_id=4"><button type="button" class="add-to-cart-btn"></button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+         </div> 
+             <div class="row">
+            
+                <div class="col-sm-3" >
+            <div class="shop-article">
+                <a href=""  data-toggle="modal" data-target="#myModal5">
+                    <img src="/Symfony/web/bundles/shop/images/small_5.jpg" class="" alt="" width="" style="max-width: 100%;" >
+                </a>
+                <p id="product_name">The Target [Unabridged] [Audible Audio Edition]</p>
+                <p id="product_price"><b>$143</b></p>
+                            </div>
+            <div class="modal fade" id="myModal5" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">The Target [Unabridged] [Audible Audio Edition]</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/Symfony/web/bundles/shop/images/5.jpg" alt="" height="320">
+                            <p>The Target [Unabridged] [Audible Audio Edition]
+by David Baldacci (Author), Ron McLarty (Narrator), Orlagh Cassidy (Narrator) </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left">Close</button>
+                            <a href="/Symfony/web/shop/order?product_id=5"><button type="button" class="add-to-cart-btn"></button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+                <div class="col-sm-3" >
+            <div class="shop-article">
+                <a href=""  data-toggle="modal" data-target="#myModal6">
+                    <img src="/Symfony/web/bundles/shop/images/small_6.jpg" class="" alt="" width="" style="max-width: 100%;" >
+                </a>
+                <p id="product_name">Theatrhythm Final Fantasy Curtain Call - Nintendo 3DS</p>
+                <p id="product_price"><b>$129</b></p>
+                            </div>
+            <div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Theatrhythm Final Fantasy Curtain Call - Nintendo 3DS</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/Symfony/web/bundles/shop/images/6.jpg" alt="" height="320">
+                            <p>    More ways to play: All new gameplay modes include Versus Mode where players go head-to-head in screen-tapping action, and Quest Medley, where players customize a party of their favorite characters to take into music-based battles against series bosses</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left">Close</button>
+                            <a href="/Symfony/web/shop/order?product_id=6"><button type="button" class="add-to-cart-btn"></button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+                <div class="col-sm-3" >
+            <div class="shop-article">
+                <a href=""  data-toggle="modal" data-target="#myModal7">
+                    <img src="/Symfony/web/bundles/shop/images/small_7.jpg" class="" alt="" width="" style="max-width: 100%;" >
+                </a>
+                <p id="product_name">Apple iPod touch 16GB Black/Silver</p>
+                <p id="product_price"><b>$41</b></p>
+                            </div>
+            <div class="modal fade" id="myModal7" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">Apple iPod touch 16GB Black/Silver</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/Symfony/web/bundles/shop/images/7.jpg" alt="" height="320">
+                            <p>    In the Box - iPod Touch, Apple EarPods, Lightning to USB cable, QuickStart guideFeatures
+    Apple Earpods
+    Brilliant 4 Retina display with Multi-Touch IPS technology
+    Front-Facing FaceTime camera with 1.2MP photos &amp; 720p HD video recording. </p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left">Close</button>
+                            <a href="/Symfony/web/shop/order?product_id=7"><button type="button" class="add-to-cart-btn"></button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+                <div class="col-sm-3" >
+            <div class="shop-article">
+                <a href=""  data-toggle="modal" data-target="#myModal8">
+                    <img src="/Symfony/web/bundles/shop/images/small_8.jpg" class="" alt="" width="" style="max-width: 100%;" >
+                </a>
+                <p id="product_name">DC Men&#039;s Pure Action Sports Shoe</p>
+                <p id="product_price"><b>$99</b></p>
+                            </div>
+            <div class="modal fade" id="myModal8" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                <div class="modal-dialog">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title" id="myModalLabel">DC Men&#039;s Pure Action Sports Shoe</h4>
+                        </div>
+                        <div class="modal-body">
+                            <img src="/Symfony/web/bundles/shop/images/8.jpg" alt="" height="320">
+                            <p>    Leather
+    Rubber sole
+    Shaft measures approximately 5.5&quot; from arch
+    DC Pure Shoes Fashion Footwear for Men
+</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal" style="float:left">Close</button>
+                            <a href="/Symfony/web/shop/order?product_id=8"><button type="button" class="add-to-cart-btn"></button></a>
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>        
+         </div> 
+            
+            
+</div>    
+<div id="footer">
+    Development/Design by 
+    <a href="/Symfony/web/paradigm/" id="footer-link" title="MonaLisaCreations.de">MONA LISA Creations</a>
+     <span style="font-family:arial;font-size:12px"> ©</span> 2015
+</div>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script src="http://netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+<script src="//code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+<script>
+/*
+$(document).ready(function(){
+    
+    jQuery("#product").autocomplete({
+        source: function (request, response) {
+            console.dir(request); //debug            
+            jQuery.get("getproduct.php?q="+request.term, function(data, status, xhr) {
+                console.log("data: " + data); //debug
+                console.log("status: " + status); //debug
+                console.log("xhr: "); //debug
+                console.dir(xhr);
+                console.log("response: " + response); //debug
+                response(data);
+            });
+        },
+        minLength: 1
+    });
+});
+*/        
+        // JAVASCRIPT method
+                     
+        if (window.XMLHttpRequest) {
+            xmlhttp = new XMLHttpRequest();
+        } else {
+            xmlhttp = new ActiveXObject("Microsoft.XMLHTTP");
+        }
+        xmlhttp.open('GET', "getproduct.php?q=" + $("#product").val(), true);
+        xmlhttp.send();
+        xmlhttp.onreadystatechange = function(){            
+            if(xmlhttp.readyState == 4 && xmlhttp.status == 200){                
+                result = JSON.parse(xmlhttp.responseText);
+                document.getElementById('txtHint').innerHTML = $("#product").val(); //debug
+                console.log(result); //debug
+                $("#product").autocomplete({
+                    source: result,                                                
+                    minLength: 1
+                });                
+            }            
+        };
+        
+        
+
+</script>
+</body>
+</html>

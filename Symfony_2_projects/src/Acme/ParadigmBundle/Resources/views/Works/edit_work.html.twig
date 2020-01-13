@@ -1,0 +1,81 @@
+{% include 'ParadigmBundle:partials:cms_admin_header.html.twig' %}
+
+<!-- FLASH -->
+{% set flash  = app.session.flashbag.get('flash') %}
+{% if flash.type is defined %}
+    <div class="alert alert-{{ flash.type }}">{{ flash.message|raw }}</div>    
+{% endif %}
+    
+<div class="container margin-top-3" style="min-height:687px; letter-spacing: 2px;">
+    <h2>Edit a work</h2>
+
+    <form action="{{ path('edit_work') }}" method="post" enctype="multipart/form-data" onsubmit="return validateFormEditWork()" >
+        <div class='row'>
+            <div class="col-sm-8">    
+                <div class="form-group">
+                    <input type="hidden" name="id" class="form-control" value="{{ work.id }}">        
+                </div>
+                <div class="form-group">
+                    <label for="name">Name</label><span id="myErrorSpan1"></span>
+                    <input type="text" id="name" name="name" class="form-control" value="{{ work.name }}">
+                </div>
+                <div class="form-group">
+                    <label for="slug">slug</label><span id="myErrorSpan2"></span>
+                    <input type="text" id="slug" name="slug" class="form-control" value="{{ work.slug }}">
+                </div>
+                <div>
+                    <label for="content">Content</label>
+                    <textarea name="content" class="form-control">{{ work.content }}</textarea>
+                </div>
+                <div><br>
+                    <label for="category_id">Category</label>
+                    <select class="form-control" name="category_id">
+                    {% for category in categories %}
+                        {% set selected = '' %}
+                        {% if category.id == work.categoryId %}
+                            {% set selected = 'selected = "selected"' %}
+                        {% endif %}
+                        <option value="{{ category.id }}" {{ selected }}>{{ category.name }}</option>
+                    {% endfor %}
+                    </select>
+                </div> 
+            </div>
+            <div class="col-sm-4">                
+            {% if images is defined %}
+                {% for image in images %}<!-- php app/console assets:install   (public folder) -->
+                    <img src="{{ asset('bundles/paradigm/img/works/min_'~image.name) }}" ><br>
+                    <a href="{{ path('delete_image', {'id':image.id, 'work_id':work.id}  ) }}" >delete</a><br>
+                    <a href="{{ path('highlight_image', {'id':image.id, 'work_id':work.id}  ) }}" >highlight</a><br><br>
+                {% endfor %}
+            {% endif %}
+                <div class="form-group">
+                    <input type="file" name="images[]">
+                    <input type="file" name="images[]" class="hidden" id="hidden_btn">
+                </div>
+                <a href="#" class="btn btn-success" id="add_btn" >add an image (475x317)</a>
+                <div><br><button type="submit" class="btn btn-success" >submit</button></div>
+            </div>            
+        </div>
+    </form>
+</div>
+<script src="{{ asset('js/tinymce/tinymce.min.js') }}"></script>
+<script> tinymce.init({selector:'textarea'}); </script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+<script>
+// add upload_a_file button
+(function($){
+    $('#add_btn').click(function(){
+        var $clone = $('#hidden_btn').clone().attr('id','').removeClass('hidden');
+        $('#hidden_btn').before($clone);
+    })
+})(jQuery);
+/*
+OR
+    $(document).ready(function(){
+    });
+OR
+    $(function(){
+    });
+ */
+</script>
+{% include 'ParadigmBundle:partials:cms_admin_footer.html.twig' %}

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    {#% include 'ParadigmBundle:partials:offline_CSS_JS.html.twig' %#}
+    <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css"> 
+    <title>Mona Lisa Creations</title>
+    <link rel="stylesheet" href="{{ asset('bundles/paradigm/css/paradigm.css') }}" type="text/css">
+    <link rel="icon" href="{{ asset('bundles/paradigm/img/works/favicon.png') }}">
+</head>
+<body style="background-image: url('{{ asset('bundles/paradigm/img/works/background-image-music.jpg') }}'); background-size:cover; background-repeat:no-repeat;">
+    <!-- NAVBAR -->
+    <div class="navbar navbar-fixed-top navbar-inverse bs-docs-nav" role="navigation" style="position:relative; margin: 0; letter-spacing: 2px">
+      <div class="container">
+        <div id="navbar-header" class="navbar-header" style="margin-right: 0;">
+            <!-- END NAVBAR RESPONSIVE TOGGLE BUTTON ---------------------------------------------------------------------------->
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+              <span class="sr-only">Toggle navigation</span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+            </button>
+            <ul class="nav navbar-nav">
+               <li style="display:inline-block; width:200px; margin-left: 86px;">
+                   <a class="glyphicon glyphicon-home" id="glyphicon1" href="{{ path('home') }}" ></a>
+               </li>               
+            </ul>                    
+        </div>
+        <!-- Collect the nav links, forms, and other content for toggling -->
+        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+            <ul class="nav navbar-nav right-50">
+                <li style="display:inline-block; color:#999;">
+                    <a href="" class="slideToggle7" style="padding-top:15px">WEB DEVELOPMENT</a>                    
+                </li>
+            </ul>
+        <ul class="nav navbar-nav right-zero">          
+          <li>
+            <a class="glyphicon glyphicon-envelope glyphicon1" href="mailto:info@monalisacreations.de" ></a>
+          </li>
+          <li class="dropdown" style="padding-right: 45px;">
+            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Works <b class="caret"></b></a>
+            <ul class="dropdown-menu">            
+              <li><a href="{{ path('cms') }}">The International Post</a></li>
+              <li><a href="{{ path('shop_home') }}">The e-Shop</a></li>
+              <li class="divider"></li>
+              <li><a href="{{ path('home') }}">Mona Lisa Creations</a></li>
+            </ul>
+          </li>
+          <li>
+            <a href="{{ path('logout') }}" >logout</a>
+          </li>    
+        </ul>
+        </div>
+      </div>
+    </div>
+    <div class="navbar-content">
+        <p>Web developer since 2006, based in Germany.<br>
+           Specialized in rock solid web application development coupled with responsive web design.<br>
+           Every web project is built primarily using open source technologies such as PHP and MySQL.<br>
+           We extensively use Symfony2 MVC Framework, jQuery, HTML5, CSS and AJAX.<br>
+           We are passionate about web technologies and constantly keep an eye out for new technologies.
+        </p>
+    </div>
+    
