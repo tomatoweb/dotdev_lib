@@ -1,0 +1,20 @@
+{% extends 'base.html.twig' %}
+
+{% block title 'edition de bien' %}
+
+{% block body %}
+
+    <div class="container mt-5 mb-5 w-25">
+        <h1 class="text-center">
+            Editer {{ property.name }}
+        </h1>
+
+        {{ form_start(form) }}
+            {{ form_rest(form) }}
+
+        <button class="btn btn-secondary">sauvegarder</button>
+        {{ form_end(form) }}
+
+    </div>
+
+{% endblock %}
