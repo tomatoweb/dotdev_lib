@@ -1,0 +1,101 @@
+commandes symfony :
+
+symfony cli setup.exe		à installer dans le répertoire de symfony pour utiliser la commande 'symfony' (par exemple: 'symfony -V')
+							utile: taper la commande 'symfony' toute seule pour la documentation du cli symfony
+
+				symfony.exe help 				pour voir toutes les commandes
+				symfony.exe help {commande} 	pour voir l'aide sur la commande
+				symfony server:status 			need installed WebServerBundle
+				symfony serve  					pour lancer le serveur  (Symfony provides a web server built on top of the PHP server (php -S 128.0.0.1:8000 -t public) to simplify your local setup. This server is distributed as a bundle, so you must first install and enable the server bundle.)
+				symfony serve -d  				pour lancer le serveur en daemon (background, pouvoir continuer à utiliser la console)
+				symfony help serve  			voir les options du server
+
+Attention:
+				symfony -V ou symfony -v 		donne la version du cli symfony.exe (pas le framework)
+				bin/console --version			donne la version du framework (ainsi que l'environnement [dev ou prod], le mode debug ou pas)
+
+composer self-update		update la version de composer
+
+composer require debug --dev                    installe tous les outils de debug
+                                                voir symfony.sh -> taper debug
+                                                -> symfony/debug-pack -> vers son github
+                                                -> composer.json
+                                                on voit les pack installés:
+                                                symfony/debug-bundle
+                                                symfony/monolog-bundle
+                                                easycorp/easy-log-handler
+                                                symfony/profiler-pack
+                                                symfony/var-dumper ( écrire {{ dump() }} dans le twig
+
+./bin/phpunit tests/MathTest.php                test la classe MathTest.php
+./vendor/bin/simple-phpunit                     procède les phpunit tests
+
+./bin/phpunit --version                         
+
+bin/conlole list        liste toutes les commandes disponibles
+
+bin/console 	debug:container					What services are registered with the container
+
+bin/console 	debug:autowiring				voir les classes/interfaces autowirées
+
+bin/console 	debug:container	{mot-clé}	    même chose avec mot-clé
+
+bin/console 	debug:container maker 			maker sert à générer du code (bin/console make:controller Article, bin/console make:entity Article)
+
+bin/console 	config:dump-reference 			Afficher tous les bundles installés
+
+bin/console 	assets:install --symlink  		synchronise Symfony\src\Acme\ParadigmBundle\Resources\public AND Symfony\web\bundles\paradigm
+
+bin/console 	clear:cache
+
+bin/console		make:entity {entity name}
+
+bin/console		make:migration
+
+bin/console		doctrine:migrations:diff 						c'est la même que la précédente mais sans le plugin 'make'
+
+				migrations:execute --up 20191104153855			pour tester (src/Migrations/Version20191104153855.php)
+
+				migrations:execute --down 20191104153855		pour annuler (src/Migrations/Version20191104153855.php)
+
+
+Donc pour créer des entités et leurs tables:
+
+    0. check .env and /config/packages/doctrine.yaml files
+    1. make:entity
+    2. doctrine:migrations:diff
+    3. check file src/Migrations/Version20191005556699
+    4. doctrine:migrations:migrate
+
+
+
+
+composer install
+php composer.phar install
+Cette commande va regarder si un fichier composer.lock existe.
+Si c'est le cas elle va télécharger et installer les librairies
+avec la version spécifiée dans le fichier composer.lock.,
+Si ce n'est pas le cas, elle va appeler "composer update" qui en génèrera un.
+
+composer update
+php composer.phar update
+Cette commande va regarder le contenu du fichier composer.json.
+Elle va télécharger et installer les versions les plus récentes des librairies
+en respectant les versions demandés dans votre fichier composer.json.
+Pour finir, elle va mettre à jours le fichier composer.lock
+pour refléter les versions qui viennent d'être installées.
+
+
+Conclusion
+Le fichier composer.lock est très important
+puisqu'il transcrit précisément toutes les versions des librairies installées.
+Si vous utilisez un VCS (comme GIT), ce fichier doit être suivi (commit)
+pour que toute l'équipe utilise les mêmes versions et ainsi avoir un workflow homogène.
+
+Attention : Il ne faut jamais faire de "composer update" sur le server de production,
+seulement en développement.
+En effet, comme la commande va chercher les dernières versions des librairies,
+vous aurez un décallage avec la version en développement.
+
+composer require
+insère l'entrée dans composer.json ET télécharge et installe la dépendance
