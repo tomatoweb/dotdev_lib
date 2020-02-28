@@ -1,7 +1,7 @@
 <?php
 
 /*
-	add to config/config.php
+	add to config/autoload.php
 	$autoload['model'] = array('post_model');
 */
 

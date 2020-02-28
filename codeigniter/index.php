@@ -1,6 +1,7 @@
 <?php
-
-//var_dump(explode(';', $_SERVER['PATH']) );
+echo __FILE__.'<br>';
+echo realpath(".");
+var_dump(explode(';', $_SERVER['PATH']) );
 //echo '<pre>';print_r($_SERVER);echo '</pre>';
 /**
  * CodeIgniter

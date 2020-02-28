@@ -4,7 +4,7 @@
    back
 </button>
 	
-<div class="mx-auto w-50">
+<div class="mx-auto w-75">
 	<h3 class="my-5"><?php echo $title; ?></h3>
 
 	<span class="text-danger"><?php echo validation_errors(); ?></span>
@@ -16,7 +16,7 @@
 	  </div>
 	  <div class="form-group">
 	    <label for="body">Body</label>
-	    <textarea name="body" class="form-control" id="body" rows="3"></textarea>
+	    <textarea name="body" class="form-control" id="editor1" rows="3"></textarea>
 	  </div>
 	  <div class="form-group form-check">
 	    <input type="checkbox" class="form-check-input" id="exampleCheck1">

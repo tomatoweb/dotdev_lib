@@ -18,3 +18,6 @@
 
 </form>
 
+<!-- edit post button -->
+<a href="<?php echo base_url().'posts/edit/'.$post['id'];?>" class="btn btn-info float-right mx-3">Edit</a>
+

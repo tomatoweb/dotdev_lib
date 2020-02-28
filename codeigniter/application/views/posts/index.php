@@ -4,7 +4,7 @@
 
 <?php foreach($posts as $post) : ?>
 
-<div class="my-3">
+<div class="my-3 p-3 border border-secondary">
 
 	<h4><?php echo $post['title']; ?></h4>
 

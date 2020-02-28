@@ -8,6 +8,7 @@
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
 	<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
 	<link rel="stylesheet" href="<?php echo base_url();?>assets/css/style.css">
+	<script src="https://cdn.ckeditor.com/4.13.1/standard/ckeditor.js"></script>
 </head>
 <body>
 
