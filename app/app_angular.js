@@ -185,8 +185,7 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
 
         this.scrollTo = function(eID) {
 
-            // This scrolling function
-            // is from http://www.itnewb.com/tutorial/Creating-the-Smooth-Scroll-Effect-with-JavaScript
+            // http://www.itnewb.com/tutorial/Creating-the-Smooth-Scroll-Effect-with-JavaScript
 
             var startY = currentYPosition();
             var stopY = elmYPosition(eID);
