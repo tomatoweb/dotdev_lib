@@ -262,7 +262,9 @@ jQuery.noConflict(); // reinitialize global variables (e.g. $), avoiding conflic
       };
     });
 
-	app.controller('appCtrl', ['$scope', '$filter', '$compile', '$window', '$http', 'ajaxService', '$ngBootbox',  '$anchorScroll', '$location', '$timeout', 'anchorSmoothScroll', function($scope, $filter, $compile, $window, $http, ajaxService, $ngBootbox, $anchorScroll, $location, $timeout, anchorSmoothScroll){
+	app.controller('appCtrl',
+		// The $ prefix denotes a variable, parameter, property, or method that belongs to the core of Angular.
+		['$scope', '$filter', '$compile', '$window', '$http', 'ajaxService', '$ngBootbox',  '$anchorScroll', '$location', '$timeout', 'anchorSmoothScroll', function($scope, $filter, $compile, $window, $http, ajaxService, $ngBootbox, $anchorScroll, $location, $timeout, anchorSmoothScroll){
 
         /*
         * IMPORTANT: $location service need target="_self" in href elements in views
