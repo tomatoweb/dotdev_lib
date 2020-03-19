@@ -14,7 +14,6 @@ class HomeController{
      */
     private $twig;
 
-
     /**
      * @param Environment $twig
      */
