@@ -19,17 +19,25 @@ class PropertyController extends AbstractController{
      */
     public function index(PropertyRepository $repo, EntityManagerInterface $em): Response{
 
+        // test create
         $property = (new Property())
             ->setName('bel-etage')
             ->setDescription("un duplex")
             ->setSurface(55)
             ->setBedrooms(2)
-            ->setRooms(4);
-        $em->persist($property);
+            ->setRooms(4)
+            ->setPrice(10000);
 
+        // test insert
+        //$em->persist($property);
+
+        // test select
         $prop = $repo->findAllCreated();
+
+        // test update le cinquième
         $prop[4]->setName('appart');
 
+        // test commit
         $em->flush();
 
         return $this->render('property/index.html.twig',

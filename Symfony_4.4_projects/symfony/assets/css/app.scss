@@ -1,4 +1,5 @@
-$color :grey;
+// Test SASS compilation with some variable
+$color :green;
 
 body {
     background-color: $color;
